@@ -1,6 +1,6 @@
 puts "Deleting all previous seeds"
 Image.destroy_all
-Product.destroy_all
+Furniture_item.destroy_all
 User.destroy_all
 puts "Done deleting"
 
