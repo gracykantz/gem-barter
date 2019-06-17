@@ -10,6 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
+
 ActiveRecord::Schema.define(version: 2019_06_17_093349) do
 
   # These are extensions that must be enabled in order to support this database
@@ -23,6 +25,14 @@ ActiveRecord::Schema.define(version: 2019_06_17_093349) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_furniture_items_on_user_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "photo"
+    t.bigint "furniture_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["furniture_item_id"], name: "index_images_on_furniture_item_id"
   end
 
   create_table "swipes", force: :cascade do |t|
@@ -53,6 +63,7 @@ ActiveRecord::Schema.define(version: 2019_06_17_093349) do
   end
 
   add_foreign_key "furniture_items", "users"
+  add_foreign_key "images", "furniture_items"
   add_foreign_key "swipes", "furniture_items", column: "owned_furniture_item_id"
   add_foreign_key "swipes", "furniture_items", column: "wanted_furniture_item_id"
 end
