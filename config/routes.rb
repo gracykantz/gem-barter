@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'categories/index'
   devise_for :users
   root to: 'pages#home'
   resources :furniture_items do

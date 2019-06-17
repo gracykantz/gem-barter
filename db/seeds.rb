@@ -5,7 +5,7 @@ User.destroy_all
 puts "Done deleting"
 
 livingroom = Category.create!(
-  name: Living Room,
+  name: 'Living Room',
   remote_photo_url: "https://www.ikea.com/gb/en/images/rooms/ikea-ikea-black-vimle-five-seatcorner-sofa-chaise-longue__1364482349931-s5.jpg"
   )
 
@@ -25,7 +25,7 @@ office = Category.create!(
   )
 
 pets = Category.create!(
-  name: Pet Accessories,
+  name: 'Pet Accessories',
   remote_photo_url: "https://askgramps.org/files/2016/08/pets1.jpg"
   )
 
@@ -373,27 +373,9 @@ anne = User.create!(
     average_rating: 0
     )
 
-furniture_item = .furniture_items.create!(
+furniture_item = anne.furniture_items.create!(
   title: "",
   description: "",
   category: livingroom
-  )
-  photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "")
-
-
-= User.create!(
-    first_name: "",
-    last_name: "",
-    email: "",
-    password: "123456",
-    bio: "",
-    remote_photo_url: "",
-    average_rating: 0
-    )
-
-furniture_item = .furniture_items.create!(
-  title: "",
-  description: "",
-  category: 1,
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "")
