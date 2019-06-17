@@ -1,1 +1,4 @@
 show.html.erb
+<% @furniture_images.each do |image| %>
+<%= cl_image_tag image.photo, height: 400, width: 380, crop: :fill %>
+<% end %>
