@@ -380,3 +380,4 @@ furniture_item = anne.furniture_items.create!(
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "")
 
+puts "Seed file finished"
