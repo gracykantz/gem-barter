@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+<%= image_tag(@user.avatar) %>
+<br>
+<%= simple_form_for @user do |f| %>
+  <%= f.input  %>
+  <%= f.input :first_name as: :text, label: "Write your reviewMMB" %>
+  <%= f.input :last_name as: :text, label: "Write your review" %>
+  <%= f.input :email as: :text, label: "Write your review" %>
+  <%= f.input :bio as: :text, label: "Write your review" %>
+  <%= f.input :avatar as: :text, label: "Write your review" %>
+  <%= f.input :average_rating as: :text, label: "Write your review" %>-->
+  <%= f.submit "Submit", class: "btn btn-primary"%>
+<% end %>
