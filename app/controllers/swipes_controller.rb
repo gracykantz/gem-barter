@@ -11,6 +11,10 @@ class SwipesController < ApplicationController
 
   def create
     # Create a new Swipe record
+    @swipe = Swipe.new(swipe_params)
+    if @swipe.save
+      redirect_to '' # update the rendering path
+    end
   end
 
   def edit
@@ -20,6 +24,9 @@ class SwipesController < ApplicationController
   def update
     # Update the swipe record
     @swipe = Swipe.update(swipe_params)
+    if @swipe.save
+      redirect_to ''  # update the rendering path
+    end
   end
 
   private

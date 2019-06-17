@@ -373,27 +373,12 @@ anne = User.create!(
     average_rating: 0
     )
 
-furniture_item = .furniture_items.create!(
+furniture_item = anne.furniture_items.create!(
   title: "",
   description: "",
   category: livingroom
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "")
 
+puts "Seed file finished"
 
-= User.create!(
-    first_name: "",
-    last_name: "",
-    email: "",
-    password: "123456",
-    bio: "",
-    remote_photo_url: "",
-    average_rating: 0
-    )
-
-furniture_item = .furniture_items.create!(
-  title: "",
-  description: "",
-  category: 1,
-  )
-  photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "")
