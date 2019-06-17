@@ -1,36 +1,36 @@
 puts "Deleting all previous seeds"
 Image.destroy_all
-Product.destroy_all
+Furniture_item.destroy_all
 User.destroy_all
 puts "Done deleting"
 
 livingroom = Category.create!(
-  name: Living Room,
+  name: "Living Room",
   remote_photo_url: "https://www.ikea.com/gb/en/images/rooms/ikea-ikea-black-vimle-five-seatcorner-sofa-chaise-longue__1364482349931-s5.jpg"
   )
 
 bedroom = Category.create!(
-  name: Bedroom,
+  name: "Bedroom",
   remote_photo_url: "https://www.ikea.com/gb/en/images/rooms/ikea-sleep-easy-with-everything-neatly-tucked-away__1364339774282-s5.jpg"
   )
 
 kitchen = Category.create!(
-  name: Kitchen,
+  name: "Kitchen",
   remote_photo_url: "https://info.ikea-usa.com/Moving/Content/img/gallery/kitchen/PH123710_1150x804.jpg"
   )
 
 office = Category.create!(
-  name: Office,
+  name: "Office",
   remote_photo_url: "https://www.ikea.com/gb/en/images/rooms/ikea-bekant-home-office-roomset__1364651320368-s5.jpg"
   )
 
 pets = Category.create!(
-  name: Pet Accessories,
+  name: "Pet Accessories",
   remote_photo_url: "https://askgramps.org/files/2016/08/pets1.jpg"
   )
 
 outdoor = Category.create!(
-  name: Outdoor,
+  name: "Outdoor",
   remote_photo_url: "https://stylecurator.com.au/wp-content/uploads/2018/02/IKEA-outdoor-living.jpg"
   )
 
