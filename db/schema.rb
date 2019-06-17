@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_06_17_160853) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,6 +30,14 @@ ActiveRecord::Schema.define(version: 2019_06_17_160853) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "traded"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "photo"
+    t.bigint "furniture_item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["furniture_item_id"], name: "index_images_on_furniture_item_id"
   end
 
   create_table "swipes", force: :cascade do |t|
@@ -59,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_06_17_160853) do
   end
 
   add_foreign_key "furniture_items", "users"
+  add_foreign_key "images", "furniture_items"
   add_foreign_key "swipes", "furniture_items", column: "owned_furniture_item_id"
   add_foreign_key "swipes", "furniture_items", column: "wanted_furniture_item_id"
 end
