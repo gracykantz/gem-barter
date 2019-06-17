@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_06_17_133031) do
 
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -32,6 +33,12 @@ ActiveRecord::Schema.define(version: 2019_06_17_133031) do
     t.bigint "category_id"
     t.index ["category_id"], name: "index_furniture_items_on_category_id"
     t.index ["user_id"], name: "index_furniture_items_on_user_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "traded"
   end
 
   create_table "images", force: :cascade do |t|
