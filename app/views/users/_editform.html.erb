@@ -1,0 +1,20 @@
+<%= image_tag(@user.avatar) %>
+<%= simple_form_for @user do |f| %>
+<%= f.error_notification %>
+<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<div class="form-inputs m-0">
+  <%= f.input :first_name, label: "First name" %>
+  <%= f.input :last_name, label: "Last name" %>
+  <%= f.input :email, label: "Email" %>
+  <%= f.input :bio, label: "Bio" %>
+  <%= f.input :avatar ,label: "avatar" %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.submit "Submit", class: "btn btn-primary"%>
+<% end %>
+
+</div>
+<div class="form-actions">
+  <%= f.button :submit, class: "btn btn-primary" %>
+</div>
+<% end %>
