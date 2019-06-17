@@ -28,6 +28,8 @@ class FurnitureItemController < ApplicationController
 
   def update
     # Update the selected furniture
+    @furniture = furniture_item.update(furniture_params)
+    redirect_to '' # define the redirection path later - By Shalini
   end
 
   def delete
