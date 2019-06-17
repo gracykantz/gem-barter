@@ -1,19 +1,19 @@
-class FurnitureItemController < ApplicationController
+class FurnitureItemsController < ApplicationController
   before_action :set_furniture, only: [:show, :edit, :update, :delete]
 
   def index
     # show all furniture items
-    @furniture = Furniture_Item.all
+    @furniture = FurnitureItem.all
   end
 
   def new
     # Load a new furniture
-    @furniture = Furniture_Item.new
+    @furniture = FurnitureItem.new
   end
 
   def create
     # Create the defined furniture
-    @furniture = Furniture_Item.new(furniture_params)
+    @furniture = FurnitureItem.new(furniture_params)
     @furniture.user = current_user
     if @furniture.save
       redirect_to 'furniture_show_path' # update this line to actual path - By Shalini
@@ -40,7 +40,7 @@ class FurnitureItemController < ApplicationController
   private
 
   def set_furniture
-    @furniture = Furniture_Item.find(params[:id])
+    @furniture = FurnitureItem.find(params[:id])
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
