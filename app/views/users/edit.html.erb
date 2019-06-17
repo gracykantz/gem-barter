@@ -1,0 +1,7 @@
+  <h7>Edit My Details</h7>
+   <%= cl_image_tag @user.avatar, height: 150, width: 150, crop: :fill, class: ""  %>
+   <div class="edit_container">
+    <%= render 'editform', user: @user %>
+  </div>
+  <b><%= link_to 'Show', @user %> |
+<%= link_to 'Back', show_user %></b>
