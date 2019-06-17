@@ -379,4 +379,3 @@ furniture_item = anne.furniture_items.create!(
   category: livingroom
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "")
-
