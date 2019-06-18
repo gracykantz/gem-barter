@@ -1,4 +1,4 @@
-<div class="navbar navbar-light navbar-lewagon">
+<div class="navbar navbar-light navbar-lewagon fixed-bottom">
   <%= link_to "pages#home", class: "navbar-brand" do %>
     <%= image_tag "logo.png" %>
     <% end %>
@@ -13,7 +13,7 @@
           <% end %>
 
         <%= link_to "#", class: "nav-link" do%>
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar nav-item"%>
+          <%= cl_image_tag(current_user.photo, class: "avatar nav-item", :crop=>"crop", :gravity=>"face", width: 1700, height: 1700)%>
         <% end %>
       <% else %>
         <p class="nav-item">
