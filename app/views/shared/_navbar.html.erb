@@ -1,5 +1,4 @@
-
-<div class="navbar navbar-light navbar-lewagon">
+<div class="navbar navbar-light navbar-lewagon fixed-bottom">
   <%= link_to furniture_items_path, class: "navbar-brand" do %>
     <%= image_tag "logo.png" %>
     <% end %>
@@ -15,7 +14,7 @@
 
 
         <%= link_to myprofile_path, class: "nav-link" do%>
-          <%= cl_image_tag current_user.photo, class: "avatar nav-item", width: 1700, height: 1700,:crop=>"crop", :gravity=>"face", class: "avatar"%>
+          <%= cl_image_tag current_user.photo, class: "avatar nav-item", width: 1700, height: 1700,:crop=>"crop", :gravity=>"face"%>
         <% end %>
       <% else %>
         <p class="nav-item">
