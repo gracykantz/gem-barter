@@ -328,57 +328,57 @@ furniture_item = laura.furniture_items.create!(
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/Uuwdk0D.jpg")
 
 
-carey = User.create!(
-    first_name: "Carey",
-    last_name: "Hinton",
-    email: "carey@gmail.com",
-    password: "123456",
-    bio: "Cat mom and avid gamer, looking for cool things for my office.",
-    remote_photo_url: "https://i.imgur.com/uwcCXUO.jpg",
-  #  average_rating: 0
-    )
+# carey = User.create!(
+#     first_name: "Carey",
+#     last_name: "Hinton",
+#     email: "carey@gmail.com",
+#     password: "123456",
+#     bio: "Cat mom and avid gamer, looking for cool things for my office.",
+#     remote_photo_url: "https://i.imgur.com/uwcCXUO.jpg",
+#   #  average_rating: 0
+#     )
 
-furniture_item = carey.furniture_items.create!(
-  title: "",
-  description: "",
-  category_id: kitchen
-  )
-  photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "")
-
-
-natalie= User.create!(
-    first_name: "Natalie",
-    last_name: "Carrasco",
-    email: "natalie@gmail.com",
-    password: "123456",
-    bio: "Love everything horror! Looking for more things to add to my collection.",
-    remote_photo_url: "https://i.imgur.com/2qc9inJ.jpg",
-  #  average_rating: 0
-    )
-
-furniture_item = natalie.furniture_items.create!(
-  title: "",
-  description: "",
-  category_id: outdoor
-  )
-  photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "")
+# furniture_item = carey.furniture_items.create!(
+#   title: "",
+#   description: "",
+#   category_id: kitchen
+#   )
+#   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "")
 
 
-anne = User.create!(
-    first_name: "Anne",
-    last_name: "Hoffman",
-    email: "anne@gmail.com",
-    password: "123456",
-    bio: "",
-    remote_photo_url: "",
-  #  average_rating: 0
-    )
+# natalie= User.create!(
+#     first_name: "Natalie",
+#     last_name: "Carrasco",
+#     email: "natalie@gmail.com",
+#     password: "123456",
+#     bio: "Love everything horror! Looking for more things to add to my collection.",
+#     remote_photo_url: "https://i.imgur.com/2qc9inJ.jpg",
+#   #  average_rating: 0
+#     )
 
-furniture_item = anne.furniture_items.create!(
-  title: "",
-  description: "",
-  category_id: livingroom
-  )
-  photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "")
+# furniture_item = natalie.furniture_items.create!(
+#   title: "",
+#   description: "",
+#   category_id: outdoor
+#   )
+#   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "")
+
+
+# anne = User.create!(
+#     first_name: "Anne",
+#     last_name: "Hoffman",
+#     email: "anne@gmail.com",
+#     password: "123456",
+#     bio: "",
+#     remote_photo_url: "",
+#   #  average_rating: 0
+#     )
+
+# furniture_item = anne.furniture_items.create!(
+#   title: "",
+#   description: "",
+#   category_id: livingroom
+#   )
+#   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "")
 
 puts "Seed file finished"

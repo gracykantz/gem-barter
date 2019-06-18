@@ -4,12 +4,13 @@ class FurnitureItemsController < ApplicationController
   def index
     # show all furniture items
     @furniture = FurnitureItem.all
+    @images = Image.all
+    raise
   end
 
   def new
     # Load a new furniture
     @furniture = FurnitureItem.new
-    @existfurniture = FurnitureItem.find_by_user_id(current_user.id)
     @furniture_image = @furniture.images.build
   end
 

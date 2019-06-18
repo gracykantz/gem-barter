@@ -1,1 +1,19 @@
-index.html.erb
+<p id="notice"><%= notice %></p>
+
+
+  <% @furniture.each do |furniture| %>
+  <% image = @images.find_by_furniture_id(furniture.id) %>
+  <div class="toothbrush-card">
+    <div class="background-toothbrush" style="background-image: url(<%= cl_image_path image.photo %>)"></div>
+    <% end %>
+      <h1><i class="far fa-heart heart-icon"></i></h1>
+      <%= link_to furniture do%>
+    <%#= cl_image_tag image.photo, height: 300, width: 400, crop: :fill  %>
+    <h6><%= furniture.title %></h6>
+    <p> <%= furniture.description %> </p>
+    <br>
+  </div>
+  <% end %>
+  </div>
+  <br>
+  <div id="space-for-navbar"></div>
