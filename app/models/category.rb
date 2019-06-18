@@ -1,6 +1,6 @@
 class Category < ApplicationRecord
-  has_many :furniture_items
   mount_uploader :photo, PhotoUploader
+  has_many :furniture_items
   validates :name, presence: true
   validates :photo, presence: true
 end

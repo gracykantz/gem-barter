@@ -1,29 +1,28 @@
 puts "Deleting all previous seeds"
 Image.destroy_all
-# Swipe.destroy_all
 FurnitureItem.destroy_all
-# Swipe.destroy_all
 User.destroy_all
+Category.destroy_all
 puts "Done deleting"
 
 livingroom = Category.create!(
   name: "Living Room",
-  remote_photo_url: "https://i.imgur.com/gheZcFH.jpg"
+  remote_photo_url: "https://d28m5bx785ox17.cloudfront.net/v1/img/q2tWxNRTC-Z32gPGoUdKLQAQfHkQ6eUS-VQdnc27L4c=/d/l"
   )
 
 bedroom = Category.create!(
   name: "Bedroom",
-  remote_photo_url: "https://i.imgur.com/gheZcFH.jpg"
+  remote_photo_url: "https://cdn.shopify.com/s/files/1/2660/5202/products/lmduwx5xwv1vic7nhg05_1400x.jpg?v=1536591621"
   )
 
 kitchen = Category.create!(
   name: "Kitchen",
-  remote_photo_url: "https://i.imgur.com/gheZcFH.jpg"
+  remote_photo_url: "https://i.imgur.com/fzsfTi6.jpg"
   )
 
 office = Category.create!(
   name: "Office",
-  remote_photo_url: "https://i.imgur.com/gheZcFH.jpg"
+  remote_photo_url: "https://images.furnituredealer.net/img/dealer/1391/upload/category/home_office_-_ashl_h633-27-02a-70-r40115.jpg"
   )
 
 pets = Category.create!(
@@ -43,13 +42,13 @@ gracy = User.create!(
     password: "123456",
     bio: "Lover of planet and people, cat owner, and always looking to renew and refresh the style of my home.",
     remote_photo_url: "https://i.imgur.com/KXSQEfC.jpg",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = gracy.furniture_items.create!(
   title: "Large white cat tree",
   description: "White cat tree that my cat no longer has interest in.",
-  category_id: pets.id
+  category_id: pets
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/Jubpvuu.jpg")
 
@@ -60,13 +59,13 @@ furniture_item = gracy.furniture_items.create!(
     password: "123456",
     bio: "Reliable and looking to trade!",
     remote_photo_url: "https://i.imgur.com/gheZcFH.jpg",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = shalini.furniture_items.create!(
   title: "Eclectic Bird Plate",
   description: "Beautiful blue plate with two lovebirds",
-  category_id: kitchen.id
+  category_id: kitchen
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/kx8Aow1.jpg")
 
@@ -77,13 +76,13 @@ mika = User.create!(
     password: "123456",
     bio: "Love refreshing my place, and meeting new people",
     remote_photo_url: "",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = mika.furniture_items.create!(
   title: "Large gray cat tree",
   description: "This cat tree is too big for my apartment and really overpowers the room. I'm looking for something smaller.",
-  category_id: pets.id
+  category_id: pets
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/iAgrRLG.jpg")
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/z2NQlXe.jpg")
@@ -96,13 +95,13 @@ edwin = User.create!(
     password: "123456",
     bio: "Into antique furniture with a long history.",
     remote_photo_url: "https://i.imgur.com/ZKcBGtA.jpg",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = edwin.furniture_items.create!(
   title: "Window hanging cat bed",
   description: "This cat bed is perfect for your cat! I have moved into a new apartment and no longer need this because my apartment doesn't have windows.",
-  category_id: pets.id
+  category_id: pets
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/xMewNQS.jpg")
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/J39svLj.jpg")
@@ -116,13 +115,13 @@ rose = User.create!(
     password: "123456",
     bio: "I have a beautiful daughter, and another one on the way. Looking for great finds for my kids!",
     remote_photo_url: "https://i.imgur.com/Sliu9Co.jpg",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = rose.furniture_items.create!(
   title: "Vittsjö White Glass Coffee Table",
   description: "Purchased this wonderful coffee table from IKEA, but no longer want it with the new baby on the way glass seems dangerous. Max. length: 90 cm, Width: 50 cm, Height: 50 cm",
-  category_id: livingroom.id
+  category_id: livingroom
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/xE8TdVH.jpg")
     photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/ZHge72V.jpg")
@@ -136,13 +135,13 @@ josh = User.create!(
     password: "123456",
     bio: "Happy father of two",
     remote_photo_url: "",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = josh.furniture_items.create!(
   title: "Green cutting board",
   description: "Cutting board from IKEA, used quite a bit, but bought a new one and no longer need this one.",
-  category_id: kitchen.id
+  category_id: kitchen
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/b7CiTsZ.jpg")
 
@@ -154,13 +153,13 @@ ludvig = User.create!(
     password: "123456",
     bio: "I like Magic the Gathering, and disappointing my friends.",
     remote_photo_url: "https://i.imgur.com/uUgORdr.jpg",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = ludvig.furniture_items.create!(
   title: "Ajax Glass Cleaner",
   description: "Bought too many bottles of Ajax and not in need of keeping this one.",
-  category_id: kitchen.id
+  category_id: kitchen
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/yqGZM9v.jpg")
 
@@ -172,13 +171,13 @@ alyssa = User.create!(
     password: "123456",
     bio: "",
     remote_photo_url: "https://i.imgur.com/NBQC65H.jpg",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = alyssa.furniture_items.create!(
   title: "Coffee Table with Storage",
   description: "Beautiful wooden coffee table with storage which makes it perfect for storing your blankets.",
-  category_id: livingroom.id
+  category_id: livingroom
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/dx9GKsW.jpg")
 
@@ -190,13 +189,13 @@ lucy = User.create!(
     password: "123456",
     bio: "Lover of cats and girls and I like to collect weird interesting pieces for my place, added bonus if it is anything mythology related",
     remote_photo_url: "https://i.imgur.com/M7LmDwb.jpg",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = lucy.furniture_items.create!(
   title: "Friheten Gray Sofabed",
   description: "Sofabed from IKEA called Friheten, missing pull out part.. my cat decided it was a scratching post.",
-  category_id: livingroom.id
+  category_id: livingroom
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/oaPrdXp.jpg")
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/MVEcIP5.jpg")
@@ -209,13 +208,13 @@ dom = User.create!(
     password: "123456",
     bio: "",
     remote_photo_url: "https://i.imgur.com/Jd7TWTo.jpg",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = dom.furniture_items.create!(
   title: "Cute blue elephant watering can",
   description: "I realized I don't have a green thumb so I am trading my adorable little elephant watering can for something different, and not plant-related!",
-  category_id: outdoor.id
+  category_id: outdoor
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/GQxjJhd.jpg")
 
@@ -227,13 +226,13 @@ magda = User.create!(
     password: "123456",
     bio: "Happy mother of two amazing girls, working on living sustainably so they can have a better planet to live on.",
     remote_photo_url: "https://i.imgur.com/WHU7PWg.jpg",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = magda.furniture_items.create!(
   title: "Cute Decorative Plates",
   description: "I have these adorable plates that my girls have grown out of, and want to change them out for something new!",
-  category_id: kitchen.id
+  category_id: kitchen
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/TRu0l2G.jpg")
 
@@ -246,13 +245,13 @@ drazen = User.create!(
     password: "123456",
     bio: "",
     remote_photo_url: "https://i.imgur.com/pe3OuGV.jpg",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = drazen.furniture_items.create!(
   title: "Water Bottle",
   description: "This black water bottle keeps cold drinks cold and warm drinks warm. It's really convenient.",
-  category_id: kitchen.id
+  category_id: kitchen
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/nkEosFe.jpg")
 
@@ -264,13 +263,13 @@ oscar = User.create!(
     password: "123456",
     bio: "I really like chicken wings",
     remote_photo_url: "https://i.imgur.com/17hXBzb.jpg",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = oscar.furniture_items.create!(
   title: "Spray bottle",
   description: "You can use this spray bottle for so many different things. Spray your plants with water, put cleaning supplies in it and spray it on things you need to clean. It's a great spray bottle.",
-  category_id: outdoor.id
+  category_id: outdoor
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/NViw3uI.jpg")
 
@@ -282,13 +281,13 @@ jane = User.create!(
     password: "123456",
     bio: "Redecorating my summer house and looking for antique items",
     remote_photo_url: "https://i.imgur.com/23fEv78.jpg",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = jane.furniture_items.create!(
   title: "Modern Desk",
   description: "This modern black desk is perfect for any home.",
-  category_id: office.id
+  category_id: office
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/DrZldeM.jpg")
 
@@ -300,13 +299,13 @@ olga = User.create!(
     password: "123456",
     bio: "Love to travel and explore new places, and collect things from interesting areas.",
     remote_photo_url: "https://i.imgur.com/mm0WqBN.jpg",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = olga.furniture_items.create!(
   title: "Photo Frame",
   description: "Photo frame that fits three pictures. The outside of it is birch the matting is white.",
-  category_id: livingroom.id
+  category_id: livingroom
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/e4HQuC5.jpg")
 
@@ -318,13 +317,13 @@ laura = User.create!(
     password: "123456",
     bio: "",
     remote_photo_url: "https://i.imgur.com/pPar5l2.jpg",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = laura.furniture_items.create!(
   title: "Outdoor Table",
   description: "This small outdoor table is perfect for any apartment balcony.",
-  category_id: outdoor.id
+  category_id: outdoor
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/Uuwdk0D.jpg")
 
@@ -336,13 +335,13 @@ carey = User.create!(
     password: "123456",
     bio: "Cat mom and avid gamer, looking for cool things for my office.",
     remote_photo_url: "https://i.imgur.com/uwcCXUO.jpg",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = carey.furniture_items.create!(
   title: "",
   description: "",
-  category_id: kitchen.id
+  category_id: kitchen
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "")
 
@@ -354,13 +353,13 @@ natalie= User.create!(
     password: "123456",
     bio: "Love everything horror! Looking for more things to add to my collection.",
     remote_photo_url: "https://i.imgur.com/2qc9inJ.jpg",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = natalie.furniture_items.create!(
   title: "",
   description: "",
-  category_id: outdoor.id
+  category_id: outdoor
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "")
 
@@ -372,13 +371,13 @@ anne = User.create!(
     password: "123456",
     bio: "",
     remote_photo_url: "",
-    average_rating: 0
+  #  average_rating: 0
     )
 
 furniture_item = anne.furniture_items.create!(
   title: "",
   description: "",
-  category_id: livingroom.id
+  category_id: livingroom
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "")
 
