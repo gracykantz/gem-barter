@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'categories/index'
+  get 'myprofile', to: 'pages#myprofile', as: :myprofile
   devise_for :users
   root to: 'pages#home'
   resources :furniture_items do
