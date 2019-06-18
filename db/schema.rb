@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-
-ActiveRecord::Schema.define(version: 2019_06_17_133031) do
-
-
+ActiveRecord::Schema.define(version: 2019_06_17_160853) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,18 +34,18 @@ ActiveRecord::Schema.define(version: 2019_06_17_133031) do
     t.index ["user_id"], name: "index_furniture_items_on_user_id"
   end
 
-  create_table "matches", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "traded"
-  end
-
   create_table "images", force: :cascade do |t|
     t.string "photo"
     t.bigint "furniture_item_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["furniture_item_id"], name: "index_images_on_furniture_item_id"
+  end
+
+  create_table "matches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "traded"
   end
 
   create_table "swipes", force: :cascade do |t|
@@ -72,7 +68,7 @@ ActiveRecord::Schema.define(version: 2019_06_17_133031) do
     t.string "first_name"
     t.string "last_name"
     t.text "bio"
-    t.string "avatar"
+    t.string "photo"
     t.integer "average_rating"
     t.string "location"
     t.index ["email"], name: "index_users_on_email", unique: true
