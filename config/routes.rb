@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'categories/index'
   devise_for :users
+  get 'pages/home', to: 'pages#home'
   root to: 'pages#home'
   resources :furniture_items do
     resources :swipes, except: :destroy  #only: [:index, :new, :create, :edit, :update]
