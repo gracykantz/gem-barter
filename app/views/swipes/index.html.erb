@@ -1,1 +1,7 @@
-index.html.erb
+index.html.erb - Temporary listing for Swipes
+<% @swipes.each do |swipe| %>
+Swipe ID: <%= swipe.id %>
+Liked/Disliked: <%= swipe.liked %>
+Owned Furniture: <%= swipe.owned_furniture_item_id %>
+Wanted Furniture: <%= swipe.wanted_furniture_item_id %>
+<% end %>
