@@ -9,6 +9,7 @@ class FurnitureItemsController < ApplicationController
   def new
     # Load a new furniture
     @furniture = FurnitureItem.new
+    @existfurniture = FurnitureItem.find_by_user_id(current_user.id)
     @furniture_image = @furniture.images.build
   end
 
