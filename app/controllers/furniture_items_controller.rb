@@ -3,9 +3,8 @@ class FurnitureItemsController < ApplicationController
 
   def index
     # show all furniture items
-    @furniture = FurnitureItem.all
+    @furniture_items = FurnitureItem.all
     @images = Image.all
-    raise
   end
 
   def new
