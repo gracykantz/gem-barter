@@ -5,6 +5,7 @@ class FurnitureItemsController < ApplicationController
     # show all furniture items
     @furniture_items = FurnitureItem.all
     @images = Image.all
+    @user = User.all
   end
 
   def new
