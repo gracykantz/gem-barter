@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 2019_06_17_160853) do
     t.string "first_name"
     t.string "last_name"
     t.text "bio"
-    t.string "photo"
+    t.string "avatar"
     t.integer "average_rating"
     t.string "location"
     t.index ["email"], name: "index_users_on_email", unique: true
