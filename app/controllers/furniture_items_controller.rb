@@ -3,8 +3,9 @@ class FurnitureItemsController < ApplicationController
 
   def index
     # show all furniture items
-    @furniture_items = FurnitureItem.all
+    @furniture_items = FurnitureItem.all.where.not('user_id = ?', current_user.id)
     @images = Image.all
+    @user = User.all
   end
 
   def new
