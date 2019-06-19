@@ -1,0 +1,33 @@
+.profile-title {
+  font-family: $logo;
+  text-align: center;
+  color: $primary;
+  margin-bottom: 50px;
+  margin-top: 70px;
+  font-size: 50px;
+  transform: skew(31deg, -0.06turn);
+  position: absolute;
+  text-indent: 75px;
+
+}
+.profile-title-ornament {
+      background-repeat: no-repeat;
+    background-size: contain;
+    width: 219px;
+    height: 67px;
+    position: absolute;
+    top: -16px;
+    right: 76px;
+    opacity: 0.5;
+}
+
+.profile-greeting {
+  position: relative;
+}
+body {
+ background-color: $light-gray;
+}
+
+.main-profile-content {
+  padding-top: 25vh;
+}

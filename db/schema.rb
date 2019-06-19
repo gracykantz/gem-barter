@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_17_160853) do
+ActiveRecord::Schema.define(version: 2019_06_18_112338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 2019_06_17_160853) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "wanted_furniture_item_id"
+    t.bigint "match_id"
+    t.index ["match_id"], name: "index_swipes_on_match_id"
     t.index ["owned_furniture_item_id"], name: "index_swipes_on_owned_furniture_item_id"
   end
 
@@ -80,4 +82,5 @@ ActiveRecord::Schema.define(version: 2019_06_17_160853) do
   add_foreign_key "images", "furniture_items"
   add_foreign_key "swipes", "furniture_items", column: "owned_furniture_item_id"
   add_foreign_key "swipes", "furniture_items", column: "wanted_furniture_item_id"
+  add_foreign_key "swipes", "matches"
 end
