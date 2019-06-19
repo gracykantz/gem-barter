@@ -1,20 +1,105 @@
 <p id="notice"><%= notice %></p>
 
-<% @furniture_items.each do |furniture_item| %>
-  <div class="card--design">
-    <% image = @images.where('furniture_item_id = ?', furniture_item.id) %>
-    <% unless image.nil? %>
-      <% image.each do |i| %>
-        <%= cl_image_tag i.photo, class: "card--image", crop: :fill %>
-        <br>
-        <br>
-      <% end %>
-    <% end %>
-    <h6 class="card--title"><%= furniture_item.title %></h6>
-    <p class="card--content"> <%= furniture_item.description %></p>
-    <% user = @user.find(furniture_item.user_id) %>
-    <%= cl_image_tag user.photo, width: 1700, height: 1700,:crop=>"crop", :gravity=>"face", class: "avatar" %> <strong class="mr-2"><%=user.first_name%></strong>
 
-  </div>
-<% end %>
+<div class="swiper-mainbody">
+  <!-- Swiper -->
+  <div class="swiper-container swiper-container-h">
+    <div class="swiper-wrapper">
+      <% @furniture_items.each_with_index do |furniture_item, index | %>
+        <div class="swiper-slide card--design">
+          <% image = @images.where('furniture_item_id = ?', furniture_item.id) %>
+          <% unless image.nil? %>
+            <% if image.count >1 %>
+              <div class="swiper-container swiper-container-v">
+                <div class="swiper-wrapper">
+                  <% image.each do |i| %>
+                    <div class="swiper-slide" id="section1-<%= i.id %>">
+                      <%= cl_image_tag i.photo, class: "card--image", crop: :fill %>
+                    </div>
+                  <% end %>
+                  <div class="swiper-pagination swiper-pagination-v"></div>
+                </div>
+              </div>
+            <% else %>
+              <div class="swiper-slide">
+                <%= cl_image_tag image[0].photo, class: "card--image", crop: :fill %>
+              </div>
+            <% end %>
+            <br>
+            <div>
+            <h6 class="card--title"><%= furniture_item.title %></h6>
+            </div>
+            <br>
+            <p class="card--content"> <%= furniture_item.description %></p>
+            <br>
+            <% user = @user.find(furniture_item.user_id) %>
+            <%= cl_image_tag user.photo, width: 1700, height: 1700,:crop=>"crop", :gravity=>"face", class: "avatar" %> <strong class="mr-2"><%=user.first_name%></strong>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="swiper-pagination swiper-pagination-h"></div>
+    </div>
+
+
+<script>
+
+
+
+
+  const mySwiper = document.querySelector('.swiper-container-h').swiper;
+  const mySwiperV = document.querySelector('.swiper-container-v').swiper;
+
+
+
+</script>
+      <!--div class="swiper-slide">
+        <div class="swiper-container swiper-container-v">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">Vertical Slide 1</div>
+            <div class="swiper-slide">Vertical Slide 2</div>
+            <div class="swiper-slide">Vertical Slide 3</div>
+            <div class="swiper-slide">Vertical Slide 4</div>
+            <div class="swiper-slide">Vertical Slide 5</div>
+          </div>
+          <div class="swiper-pagination swiper-pagination-v"></div>
+        </div>
+      </div>
+      <div class="swiper-slide">Horizontal Slide 3</div>
+      <div class="swiper-slide">Horizontal Slide 4</div>
+    </div>
+    < !-- Add Pagination - ->
+    <div class="swiper-pagination swiper-pagination-h"></div>
+  </div-->
+
+</div>
+</div>
+<!--
+
+  <% @furniture_items.each_with_index do |furniture_item, index | %>
+      <div class="card--design slide" id="slide<%= index %>">
+        <% image = @images.where('furniture_item_id = ?', furniture_item.id) %>
+        <% unless image.nil? %>
+          <% image.each do |i| %>
+            <div class="" id="section1-<%= i.id %>">
+              <%= cl_image_tag i.photo, class: "card--image", crop: :fill %>
+            </div>
+          <% end %>
+        <% end %>
+        <h6 class="card--title"><%= furniture_item.title %></h6>
+        <p class="card--content"> <%= furniture_item.description %></p>
+        <% user = @user.find(furniture_item.user_id) %>
+    <%= cl_image_tag user.photo, width: 1700, height: 1700,:crop=>"crop", :gravity=>"face", class: "avatar" %> <strong class="mr-2"><%=user.first_name%></strong>
+      </div>
+  <% end %>
+    </div>
+</div-->
+
+<!--script>
+const scrollingPics = document.querySelector("#fullpage");
+scrollingPics.addEventListener('click', (event) => {
+  //alert("clicked");
+});
+fullpage_api.setAllowScrolling(true, 'left, right, up, down');
+
+</script-->
 
