@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'categories/index'
   get 'myprofile', to: 'pages#myprofile', as: :myprofile
+  get 'mark_traded', to: 'furniture_items#mark_traded', as: :traded
   devise_for :users
   root to: 'pages#home'
   resources:categories do # Added categories as parent for Furniture Items

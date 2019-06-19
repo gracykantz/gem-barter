@@ -5,5 +5,6 @@ class PagesController < ApplicationController
 
   def myprofile
     current_user.id
+    # raise
   end
 end

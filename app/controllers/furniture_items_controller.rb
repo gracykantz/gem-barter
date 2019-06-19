@@ -55,6 +55,25 @@ class FurnitureItemsController < ApplicationController
     end
   end
 
+  def mark_traded
+    @furniture = FurnitureItem.find_by_user_id(current_user.id)
+    @swipe = Swipe.find_by(owned_furniture_item_id: @furniture.id)
+    if !@swipe.nil?
+      @match = Match.find_by(id: @swipe.match_id)
+      if !@match.nil?
+        @match.update(traded: true)
+        if @match.save!
+          redirect_to myprofile_path
+        end
+      else
+        redirect_to myprofile_path
+      end
+    else
+      redirect_to myprofile_path
+    end
+  end
+
+
   def new
     # Load a new furniture
     @furniture = FurnitureItem.new
