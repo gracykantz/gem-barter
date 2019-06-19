@@ -21,13 +21,15 @@ import $ from "jquery"
         el: '.swiper-pagination-v',
         clickable: true,
       },
-       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+      loop: true,
       on: {click: (event) => {
+        const ppp = event.target.parentElement;
+        const pp1 = ppp.parentElement;
+        const pp2 = pp1.parentElement.swiper;
+
         const mySwiperV = document.querySelector('.swiper-container-v').swiper;
-        mySwiperV.slideNext();
+        pp2.slideNext();
+        // mySwiperV.slideNext();
       }}
     });
 
