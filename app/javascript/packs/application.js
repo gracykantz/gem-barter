@@ -12,8 +12,6 @@ import $ from "jquery"
       },
     });
 
-
-
     const swiperV = new Swiper('.swiper-container-v', {
       direction: 'vertical',
       spaceBetween: 250,
@@ -32,16 +30,3 @@ import $ from "jquery"
         // mySwiperV.slideNext();
       }}
     });
-
-
-/*  swiperV.on('click', (event) => {
-    alert("tapped");
-  });
-*/
-//  swiperV.on('slideChange', function() {
-
-  // alert("tapped");
-  //});
-
-// Now you can use all slider methods like
-//Swiper.slideNext();
