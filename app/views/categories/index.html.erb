@@ -1,5 +1,12 @@
-<h1>Categories#index</h1>
+ <%= link_to furniture_items_path do  %>
+  <div class="category-background" style="background-image:linear-gradient(45deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), url(https://i.pinimg.com/originals/af/58/3f/af583fa3480d39b05cbbf6ab1748aaca.jpg);">
+    <h3>View All</h3>
+  </div>
+  <% end %>
 <% @categories.each do |category| %>
-  <br>
-  <% category.name %>
+<%= link_to furniture_items_path do %>
+    <div class="category-background" style="background-image:linear-gradient(45deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.8)), url(<%= cl_image_path category.photo %>)">
+    <h3 class="category-text"><%= category.name %></h3>
+    </div>
+    <% end %>
 <% end %>
