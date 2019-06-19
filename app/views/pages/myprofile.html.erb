@@ -13,9 +13,12 @@
     <% furniture_item = FurnitureItem.find_by(user_id: current_user.id) %>
     <% if !furniture_item.nil? %>
 
-    <%= link_to traded_path, data: {confirm: "Are you sure you want to mark your furniture as traded?"} do %>
-    <button class="btn btn-success button--spacing">Mark item as traded</button>
-    <% end %>
+    <% @swipes = Swipe.where('owned_furniture_item_id = ? OR wanted_furniture_item_id = ?', furniture_item.id, furniture_item.id)%>
+      <% if !@swipes.first.nil? %>
+      <%= link_to traded_path, data: {confirm: "Are you sure you want to mark your furniture as traded?"} do %>
+      <button class="btn btn-success button--spacing">Mark item as traded</button>
+      <% end %>
+      <% end %>
 
       <%= link_to edit_furniture_item_path(furniture_item) do %>
       <button class="btn btn-success button--spacing editfurniture--button">Edit your item</button>
