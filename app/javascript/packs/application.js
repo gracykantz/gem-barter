@@ -12,8 +12,6 @@ import $ from "jquery"
       },
     });
 
-
-
     const swiperV = new Swiper('.swiper-container-v', {
       direction: 'vertical',
       spaceBetween: 250,
@@ -21,25 +19,14 @@ import $ from "jquery"
         el: '.swiper-pagination-v',
         clickable: true,
       },
-       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
+      loop: true,
       on: {click: (event) => {
+        const ppp = event.target.parentElement;
+        const pp1 = ppp.parentElement;
+        const pp2 = pp1.parentElement.swiper;
+
         const mySwiperV = document.querySelector('.swiper-container-v').swiper;
-        mySwiperV.slideNext();
+        pp2.slideNext();
+        // mySwiperV.slideNext();
       }}
     });
-
-
-/*  swiperV.on('click', (event) => {
-    alert("tapped");
-  });
-*/
-//  swiperV.on('slideChange', function() {
-
-  // alert("tapped");
-  //});
-
-// Now you can use all slider methods like
-//Swiper.slideNext();
