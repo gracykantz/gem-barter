@@ -3,26 +3,38 @@
   <span class="profile-title profile-title-ornament" style="background-image: url(<%= image_path('name_ornament.svg') %>)"></span>
 </div>
 <div class="main-profile-content">
-<%= cl_image_tag current_user.photo, width: 1700, height: 1700,:crop=>"crop", :gravity=>"face", class: "avatar-large avatar-large-customized" %>
+  <%= cl_image_tag current_user.photo, width: 1700, height: 1700,:crop=>"crop", :gravity=>"face", class: "avatar-large avatar-large-customized" %>
 
-<%= link_to do %>
-<button class="btn btn-success button--spacing">Mark item as traded</button>
-<% end %>
+    <%= link_to edit_user_registration_path do %>
+    <button class="btn btn-success button--spacing top--button">Edit my profile</button>
+    <% end %>
 
-<%= link_to edit_user_registration_path do %>
-<button class="btn btn-success button--spacing top--button">Edit my profile</button>
-<% end %>
 
-<br>
+    <% furniture_item = FurnitureItem.find_by(user_id: current_user.id) %>
+    <% if !furniture_item.nil? %>
 
-<% furniture_item = FurnitureItem.find_by(user_id: current_user.id) %>
-<%= link_to edit_furniture_item_path(furniture_item) do %>
-<button class="btn btn-success button--spacing editfurniture--button">Edit my item</button>
-<% end %>
+    <% @swipes = Swipe.where('owned_furniture_item_id = ? OR wanted_furniture_item_id = ?', furniture_item.id, furniture_item.id)%>
+      <% if !@swipes.first.nil? %>
+      <%= link_to traded_path, data: {confirm: "Are you sure you want to mark your furniture as traded?"} do %>
+      <button class="btn btn-success button--spacing">Mark item as traded</button>
+      <% end %>
+      <% end %>
 
-<br>
+      <%= link_to edit_furniture_item_path(furniture_item) do %>
+      <button class="btn btn-success button--spacing editfurniture--button">Edit your item</button>
+      <% end %>
 
-<%= link_to "Delete your item", furniture_item_path(furniture_item), class: "btn btn-danger button--spacing traded--button",
-method: :delete,
-data: {confirm: "Are you sure you want to mark this post as traded?"} %>
+      <br>
+
+      <%= link_to "Delete your item", furniture_item_path(furniture_item), class: "btn btn-danger button--spacing traded--button",
+      method: :delete,
+      data: {confirm: "Are you sure you want to remove the furniture for trade?"} %>
+
+    <%else %>
+      <% @category = Category.find_by_name("View All") %>
+      <%= link_to new_furniture_item_path do %>
+      <button class="btn btn-success button--spacing editfurniture--button">Add Furniture to begin trade</button>
+    <% end %>
+  <br>
+  <% end %>
 </div>

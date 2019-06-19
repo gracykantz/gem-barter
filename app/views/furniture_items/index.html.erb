@@ -1,49 +1,64 @@
 <p id="notice"><%= notice %></p>
 
-
 <div class="swiper-mainbody">
   <!-- Swiper -->
   <div class="swiper-container swiper-container-h">
     <div class="swiper-wrapper">
-
-      <% if true %>
-      <% @furniture_items.each_with_index do |furniture_item, index | %>
-        <div class="swiper-slide card--design">
-          <% image = @images.where('furniture_item_id = ?', furniture_item.id) %>
-          <% unless image.nil? %>
-            <% if image.count >1 %>
-              <div class="swiper-container swiper-container-v">
-                <div class="swiper-wrapper">
-                  <% image.each do |i| %>
-                    <div class="swiper-slide" id="section1-<%= i.id %>">
-                      <%= cl_image_tag i.photo, class: "card--image", crop: :fill %>
+      <% if !@user_furniture.nil? %>
+        <% if !@furniture_items.first.nil?%>
+            <% @furniture_items.each do |furniture_item| %>
+              <div class="swiper-slide card--design">
+                <% image = @images.where('furniture_item_id = ?', furniture_item.id) %>
+                <% unless image.nil? %>
+                  <% if image.count > 1 %>
+                      <div class="swiper-container swiper-container-v">
+                      <div class="swiper-wrapper">
+                        <% image.each do |i| %>
+                        <div class="swiper-slide" id="section1-<%= i.id %>">
+                          <%= cl_image_tag i.photo, class: "card--image", crop: :fill %>
+                        </div>
+                        <% end %>
+                      <div class="swiper-pagination swiper-pagination-v"></div>
+                      </div>
+                      </div>
+                  <% else %>
+                    <div class="swiper-slide">
+                      <%= cl_image_tag image[0].photo, class: "card--image", crop: :fill %>
                     </div>
                   <% end %>
-                  <div class="swiper-pagination swiper-pagination-v"></div>
+                <br>
+                <div>
+                  <h6 class="card--title"><%= furniture_item.title %></h6>
                 </div>
-              </div>
-            <% else %>
-              <div class="swiper-slide">
-                <%= cl_image_tag image[0].photo, class: "card--image", crop: :fill %>
-              </div>
-            <% end %>
-            <br>
-            <div>
-            <h6 class="card--title"><%= furniture_item.title %></h6>
+                <br>
+                <p class="card--content"> <%= furniture_item.description %></p>
+                <br>
+                <% user = @user.find(furniture_item.user_id) %>
+                <%= cl_image_tag user.photo, width: 1700, height: 1700,:crop=>"crop", :gravity=>"face", class: "avatar" %> <strong class="mr-2"><%=user.first_name%></strong>
+                <% end %>
             </div>
-            <br>
-            <p class="card--content"> <%= furniture_item.description %></p>
-            <br>
-            <% user = @user.find(furniture_item.user_id) %>
-            <%= cl_image_tag user.photo, width: 1700, height: 1700,:crop=>"crop", :gravity=>"face", class: "avatar" %> <strong class="mr-2"><%=user.first_name%></strong>
           <% end %>
-        </div>
-      <% end %>
-      <div class="swiper-pagination swiper-pagination-h"></div>
+          <div class="swiper-pagination swiper-pagination-h"></div>
       <% else %>
-        false
+      <% @user_furniture = FurnitureItem.find_by_user_id(current_user.id) %>
+      <% if @user_furniture.nil? %>
+      <center><b><p class="card--content">Add your Furniture to begin Trading!!</p></b></center>
+      <% @category = Category.find_by_name("View All") %>
+      <%= link_to new_furniture_item_path do %>
+      <button class="btn btn-success button--spacing editfurniture--button">Add Furniture to begin trade</button>
       <% end %>
-    </div>
+      <% else %>
+      <center><b><p class="card--content">No items at the moment, you will have it soon to trade</p></b></center>
+      <% end %>
+      <% end %>
+      <% else %>
+      <center><b><p class="card--content">Add your Furniture to begin Trading!!</p></b></center>
+      <% @category = Category.find_by_name("View All") %>
+      <%= link_to new_furniture_item_path do %>
+      <button class="btn btn-success button--spacing editfurniture--button">Add Furniture to begin trade</button>
+      <% end %>
+      <% end %>
+   </div>
   </div>
 </div>
 
