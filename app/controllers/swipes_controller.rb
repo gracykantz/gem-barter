@@ -2,7 +2,6 @@ class SwipesController < ApplicationController
   def index
     # Fetch all swipes
     @swipes = Swipe.all
-    raise
   end
 
   def new
@@ -26,14 +25,19 @@ class SwipesController < ApplicationController
     unless @swipe.wanted_furniture_item_id.nil?
       if @swipe.save
         # Find all existing Swipe records
-        create_match(@swipe)
+
+        @matchrec = create_match(@swipe)
+        if !@matchrec.nil?
+          @swipe.match_id = @matchrec.id
+          @swipe.save!
+        end
         # @existswipes = Swipe.where(' (owned_furniture_item_id = ? AND wanted_furniture_item_id = ?)
         #   AND liked = ?', @swipe.wanted_furniture_item_id, @swipe.owned_furniture_item_id, true)
         # unless @existswipes.nil?
         #   @match = Match.new
         #   Match.create!(traded: true)
         # end
-        redirect_to furniture_item_path(params[:furniture_item_id]) # update the rendering path
+        redirect_to furniture_items_path # update the rendering path
       end
     end
     # end
@@ -59,10 +63,13 @@ class SwipesController < ApplicationController
     @existswipes = Swipe.where(" (owned_furniture_item_id = ? AND wanted_furniture_item_id = ?)
       AND liked = ?", swipe.wanted_furniture_item_id, swipe.owned_furniture_item_id, true)
     # If such Swipe record exist, create a match
-    unless @existswipes.nil?
+    if @existswipes.count > 0
       @match = Match.new
-      Match.create!(traded: true)
+      @match = Match.create!(traded: true)
+      @existswipes.match_id = @match.id
+      @existswipes.save!
     end
+    return @match
   end
 
   def edit
