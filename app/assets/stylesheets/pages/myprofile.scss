@@ -1,0 +1,23 @@
+.profile-title {
+  font-family: $logo;
+  text-align: center;
+  color: $primary;
+  margin-bottom: 50px;
+  margin-top: 70px;
+  font-size: 50px;
+  transform: skew(31deg, -0.06turn);
+  position: absolute;
+
+
+}
+
+.test {
+  position: relative;
+}
+body {
+ background-color: $light-gray;
+}
+
+.test2 {
+  padding-top: 25vh;
+}

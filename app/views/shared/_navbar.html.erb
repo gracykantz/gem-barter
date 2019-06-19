@@ -1,19 +1,20 @@
-<div class="navbar navbar-light navbar-lewagon">
-  <%= link_to "pages#home", class: "navbar-brand" do %>
+<div class="navbar navbar-light navbar-lewagon fixed-bottom">
+  <%= link_to furniture_items_path, class: "navbar-brand" do %>
     <%= image_tag "logo.png" %>
     <% end %>
   <div class="nav_icons" id="navbarSupportedContent">
       <% if user_signed_in? %>
-          <%= link_to "#", class: "nav-link" do %>
+          <%= link_to categories_index_path, class: "nav-link" do %>
           <p class="nav-item"><i class="nav_icon fas fa-search"></i></p>
           <% end %>
 
-          <%= link_to "#", class: "nav-link" do%>
+          <%= link_to messages_index_path, class: "nav-link" do%>
           <p class="nav-item"><i class="nav_icon far fa-comments"></i></p>
           <% end %>
 
-        <%= link_to "#", class: "nav-link" do%>
-          <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar nav-item"%>
+
+        <%= link_to myprofile_path, class: "nav-link" do%>
+          <%= cl_image_tag current_user.photo, class: "avatar nav-item", width: 1700, height: 1700,:crop=>"crop", :gravity=>"face"%>
         <% end %>
       <% else %>
         <p class="nav-item">

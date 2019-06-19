@@ -1,0 +1,23 @@
+<div class="test">
+<h1 class="profile-title">Hej <%= current_user.first_name %></h1>
+</div>
+<div class="test2">
+<%= cl_image_tag current_user.photo, width: 1700, height: 1700,:crop=>"crop", :gravity=>"face", class: "avatar-large avatar-large-customized" %>
+
+<%= link_to edit_user_registration_path do %>
+<button class="btn btn-success button--spacing top--button">Edit my profile</button>
+<% end %>
+
+<br>
+
+<% furniture_item = FurnitureItem.find_by(user_id: current_user.id) %>
+<%= link_to edit_furniture_item_path(furniture_item) do %>
+<button class="btn btn-success button--spacing editfurniture--button">Edit my item</button>
+<% end %>
+
+<br>
+
+<%= link_to "Mark as traded", furniture_item_path(furniture_item), class: "btn btn-danger button--spacing traded--button",
+method: :delete,
+data: {confirm: "Are you sure you want to mark this post as traded?"} %>
+</div>
