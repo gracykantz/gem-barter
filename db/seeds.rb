@@ -5,6 +5,11 @@ User.destroy_all
 Category.destroy_all
 puts "Done deleting"
 
+all = Category.create!(
+  name:"View All",
+  remote_photo_url: "https://i.pinimg.com/originals/af/58/3f/af583fa3480d39b05cbbf6ab1748aaca.jpg"
+  )
+
 livingroom = Category.create!(
   name: "Living Room",
   remote_photo_url: "https://d28m5bx785ox17.cloudfront.net/v1/img/q2tWxNRTC-Z32gPGoUdKLQAQfHkQ6eUS-VQdnc27L4c=/d/l"
@@ -328,15 +333,15 @@ furniture_item = laura.furniture_items.create!(
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/Uuwdk0D.jpg")
 
 
-# carey = User.create!(
-#     first_name: "Carey",
-#     last_name: "Hinton",
-#     email: "carey@gmail.com",
-#     password: "123456",
-#     bio: "Cat mom and avid gamer, looking for cool things for my office.",
-#     remote_photo_url: "https://i.imgur.com/uwcCXUO.jpg",
-#   #  average_rating: 0
-#     )
+carey = User.create!(
+    first_name: "Carey",
+    last_name: "Hinton",
+    email: "carey@gmail.com",
+    password: "123456",
+    bio: "Cat mom and avid gamer, looking for cool things for my office.",
+    remote_photo_url: "https://i.imgur.com/uwcCXUO.jpg",
+  #  average_rating: 0
+    )
 
 # furniture_item = carey.furniture_items.create!(
 #   title: "",

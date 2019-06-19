@@ -1,5 +1,6 @@
 class FurnitureItem < ApplicationRecord
   belongs_to :user
+  belongs_to :category
   # has_many :swipes
   has_one :owner_swipe, class_name: "Swipe", foreign_key: 'owned_furniture_item_id', dependent: :destroy
   has_one :other_swipe, class_name: "Swipe", foreign_key: 'wanted_furniture_item_id', dependent: :destroy

@@ -5,18 +5,43 @@ class FurnitureItemsController < ApplicationController
     # show all furniture items
     @images = Image.all
     @swipes = Swipe.all
+    @user = User.all
 
     if @swipes.count > 0
       # Call this method to remove the swiped records from the logged in user index list
       @furniture_items = update_furniture_items(@swipes)
     else
-      @furniture_items = FurnitureItem.where.not('user_id = ?', current_user.id)
+      # @furniture_items = FurnitureItem.where.not('user_id = ?', current_user.id)
+      @category = Category.find(params[:category_id])
+      # raise
+      # Always exclude items owned by the user for Furniture Index
+      if !@category.nil? && @category.id != 1
+        @furniture_items = FurnitureItem.where('category_id = ?', @category.id).where.not('user_id = ?', current_user.id)
+        # raise
+      else
+        @furniture_items = FurnitureItem.where.not('user_id = ?', current_user.id)
+        # raise
+      end
+    end
+
+    # @user_furniture = FurnitureItem.where('user_id = ?', current_user.id)
+    @user_furniture = FurnitureItem.find_by_user_id(current_user.id)
+    if @user_furniture.nil?
+      return
     end
   end
 
   # Call this method to remove the swiped records from the logged in user index list
   def update_furniture_items(swipesrec)
-    furniture_items = FurnitureItem.all
+    @category = Category.find(params[:category_id])
+    # raise
+    # Always exclude items owned by the user for Furniture Index
+    if !@category.nil? && @category.id != 1
+      furniture_items = FurnitureItem.where('category_id = ?', @category.id).where.not('user_id = ?', current_user.id)
+    else
+      furniture_items = FurnitureItem.where.not('user_id = ?', current_user.id)
+    end
+
     # Load swiped records
     swipearr = []
     swipesrec.each do |s|
@@ -66,6 +91,7 @@ class FurnitureItemsController < ApplicationController
 
   def edit
     @images = @furniture.images.all
+    @category = Category.find(@furniture.category_id)
     # Authenticating for editing Furniture
     unless current_user.id == @furniture.user_id
       flash[:notice] = "You don't have access to edit the Furniture"

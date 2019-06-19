@@ -11,13 +11,23 @@
 <br>
 
 <% furniture_item = FurnitureItem.find_by(user_id: current_user.id) %>
+<% if !furniture_item.nil? %>
 <%= link_to edit_furniture_item_path(furniture_item) do %>
 <button class="btn btn-success button--spacing editfurniture--button">Edit my item</button>
 <% end %>
 
 <br>
 
-<%= link_to "Mark as traded", furniture_item_path(furniture_item), class: "btn btn-danger button--spacing traded--button",
+<%= link_to "Mark as traded", category_furniture_item_path(furniture_item.category_id, furniture_item.id), class: "btn btn-danger button--spacing traded--button",
 method: :delete,
 data: {confirm: "Are you sure you want to mark this post as traded?"} %>
 </div>
+
+<%else %>
+<% @category = Category.find_by_name("View All") %>
+<%= link_to new_furniture_item_path do %>
+<button class="btn btn-success button--spacing editfurniture--button">Add Furniture to begin trade</button>
+<% end %>
+
+<br>
+<% end %>
