@@ -14,12 +14,12 @@
                       <div class="swiper-container swiper-container-v">
                       <div class="swiper-wrapper">
                         <% image.each do |i| %>
-                        <div class="swiper-slide" id="section1-<%= i.id %>">
-                          <%= cl_image_tag i.photo, class: "card--image", crop: :fill %>
-                        </div>
+                          <div class="swiper-slide" id="section1-<%= i.id %>">
+                            <%= cl_image_tag i.photo, class: "card--image", crop: :fill %>
+                          </div>
                         <% end %>
-                      <div class="swiper-pagination swiper-pagination-v"></div>
                       </div>
+                      <div class="swiper-pagination swiper-pagination-v"></div>
                       </div>
                   <% else %>
                     <div class="swiper-slide">

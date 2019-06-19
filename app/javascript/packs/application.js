@@ -7,7 +7,7 @@ import $ from "jquery"
     const swiperH = new Swiper('.swiper-container-h', {
       spaceBetween: 250,
       pagination: {
-        el: '.swiper-pagination-h',
+        //el: '.swiper-pagination-h',
         clickable: true,
       },
     });
