@@ -26,6 +26,7 @@ import $ from "jquery"
         const pp2 = pp1.parentElement.swiper;
 
         const mySwiperV = document.querySelector('.swiper-container-v').swiper;
+        console.log(mySwiperV);
         pp2.slideNext();
         // mySwiperV.slideNext();
       }}

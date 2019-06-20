@@ -1,7 +1,6 @@
 <h1 class="Furniture-new-title">Share Your Furniture</h1>
 <%= render 'form', furniture_item: @furniture %>
 </div>
-<% @category = Category.find_by_name("View All") %>
-<%= link_to category_furniture_items_path(@category.id) do %>
+<%= link_to myprofile_path do %>
   <i class="fas fa-chevron-left back-button"></i>
 <% end %>
