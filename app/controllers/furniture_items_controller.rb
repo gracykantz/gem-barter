@@ -83,15 +83,15 @@ class FurnitureItemsController < ApplicationController
   def create
     # Create the defined furniture
     @furniture = FurnitureItem.new(furniture_params)
-    @furniture.user = current_user
+    @furniture.user_id = current_user.id
     respond_to do |format|
-      if @furniture.save
+      if @furniture.save!
         params[:images]['photo'].each do |p|
           @furniture_image = @furniture.images.create!(photo: p, furniture_item_id: @furniture.id)
         end
-        format.html { redirect_to @furniture, notice: 'Furniture successfully loaded for trade now.' }
+        format.html { redirect_to myprofile_path, notice: 'Furniture successfully loaded for trade now.' }
       else
-        format.html { render action: 'new' }
+        redirect_to myprofile_path
       end
     end
     # if @furniture.save
@@ -121,8 +121,9 @@ class FurnitureItemsController < ApplicationController
 
   def update
     # Update the selected furniture
-    @furniture = furniture_item.update(furniture_params)
-    redirect_to furniture_item_path(@furniture) # define the redirection path later - By Shalini
+    # raise
+    @furniture_item = @furniture.update(furniture_params)
+    redirect_to categories_path # define the redirection path later - By Shalini
   end
 
   def delete
@@ -139,6 +140,6 @@ class FurnitureItemsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def furniture_params
-    params.require(:furniture_item).permit(:title, :description, :user, images_attributes: [:id, :furniture_item_id, :photo])
+    params.require(:furniture_item).permit(:title, :description, :category_id, :user, images_attributes: [:id, :furniture_item_id, :photo])
   end
 end

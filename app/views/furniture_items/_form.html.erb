@@ -12,6 +12,7 @@
           <%= cl_image_tag image.photo, height: 400, width: 380, crop: :fill  %>
         <% end %>
       <% else %>
+      <%= f.association :category %>
         <div class="field">
           <%= p.label :photo %><br>
           <%= p.file_field :photo, :multiple => true, name: "images[photo][]", accept:"image/*;capture=camera"  %>
