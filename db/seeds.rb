@@ -89,8 +89,8 @@ furniture_item = mika.furniture_items.create!(
   description: "This cat tree is too big for my apartment and really overpowers the room. I'm looking for something smaller.",
   category_id: pets.id
   )
-  photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/iAgrRLG.jpg")
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/z2NQlXe.jpg")
+  photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/iAgrRLG.jpg")
 
 
 edwin = User.create!(
@@ -129,7 +129,7 @@ furniture_item = rose.furniture_items.create!(
   category_id: livingroom.id
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/xE8TdVH.jpg")
-    photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/ZHge72V.jpg")
+  photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/ZHge72V.jpg")
 
 
 

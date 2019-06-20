@@ -1,5 +1,4 @@
 import "bootstrap";
-import "hammerjs";
 import Swiper from 'swiper';
 import $ from "jquery"
 
@@ -15,6 +14,8 @@ import $ from "jquery"
     const swiperV = new Swiper('.swiper-container-v', {
       direction: 'vertical',
       spaceBetween: 250,
+      autoHeight: false,
+      height: 600,
       pagination: {
         el: '.swiper-pagination-v',
         clickable: true,
@@ -31,3 +32,4 @@ import $ from "jquery"
         // mySwiperV.slideNext();
       }}
     });
+
