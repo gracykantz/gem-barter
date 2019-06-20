@@ -15,7 +15,7 @@
                       <div class="swiper-wrapper">
                         <% image.each do |i| %>
                           <div class="swiper-slide" id="section1-<%= i.id %>">
-                            <%= cl_image_tag i.photo, class: "card--image", crop: :fill %>
+                            <%= cl_image_tag i.photo, class: "card--image" %>
                           </div>
                         <% end %>
                       </div>
@@ -23,7 +23,7 @@
                       </div>
                   <% else %>
                     <div class="swiper-slide">
-                      <%= cl_image_tag image[0].photo, class: "card--image", crop: :fill %>
+                      <%= cl_image_tag image[0].photo, class: "card--image"  %>
                     </div>
                   <% end %>
                 <br>
@@ -61,5 +61,6 @@
    </div>
   </div>
 </div>
+
 
 
