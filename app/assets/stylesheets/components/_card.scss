@@ -6,24 +6,17 @@
 
 .card--image {
   width: 100%;
-  height:auto;
-
-  img {
-    width: 100%;
-    object-fit: fill;
-  }
 }
 
 .card--title {
   color: $danger;
   font-family: $headers-font;
   font-weight: bold;
-  margin-bottom: 20px;
-  margin-top: 10px;
+
 }
 
 .card--content {
   color: $primary;
   font-family: $body-font;
-  margin-bottom: 40px;
+
 }

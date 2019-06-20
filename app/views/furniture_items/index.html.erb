@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <div class="swiper-mainbody">
   <!-- Swiper -->
   <div class="swiper-container swiper-container-h">
@@ -15,26 +13,29 @@
                       <div class="swiper-wrapper">
                         <% image.each do |i| %>
                           <div class="swiper-slide" id="section1-<%= i.id %>">
-                            <%= cl_image_tag i.photo, class: "card--image" %>
+                            <%= cl_image_tag i.photo, class: "card--image", :crop=>"fill"%>
                           </div>
                         <% end %>
                       </div>
                       <div class="swiper-pagination swiper-pagination-v"></div>
                       </div>
                   <% else %>
-                    <div class="swiper-slide">
-                      <%= cl_image_tag image[0].photo, class: "card--image"  %>
-                    </div>
+                        <div class="swiper-slide">
+                          <%= cl_image_tag image[0].photo, class: "card--image" %>
+                        </div>
                   <% end %>
-                <br>
+
                 <div>
                   <h6 class="card--title"><%= furniture_item.title %></h6>
                 </div>
-                <br>
-                <p class="card--content"> <%= furniture_item.description %></p>
-                <br>
+
+                <button class="btn btn-primary" type="button" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">show more</button>
+                <div class="collapse" id="collapseExample">
+                 <p class="card--content"> <%= furniture_item.description %></p>
+                </div>
+
                 <% user = @user.find(furniture_item.user_id) %>
-                <%= cl_image_tag user.photo, width: 1700, height: 1700,:crop=>"crop", :gravity=>"face", class: "avatar" %> <strong class="mr-2"><%=user.first_name%></strong>
+                <%= cl_image_tag user.photo, width: 1700, height: 1700,:crop=>"crop", :gravity=>"face", class: "avatar" %>
                 <% end %>
             </div>
           <% end %>
@@ -61,6 +62,5 @@
    </div>
   </div>
 </div>
-
 
 
