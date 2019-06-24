@@ -10,6 +10,36 @@ import $ from "jquery"
         el: '.swiper-pagination-h',
         clickable: true,
       },
+      loop: true,
+      on: {
+        slideChange: function(){
+          const section = document.querySelector("#swipe-section-"+this.realIndex);
+          // const furniture = document.querySelector('.swiper-slide-active');
+          // console.log(fid);
+          // console.log(furniture.dataset);
+          console.log("print this");
+          console.log(section.dataset.furnitureitemid);
+          const fid = section.dataset.furnitureitemid;
+          // console.log(section.dataset);
+          // console.log(fid);
+          // console.log(this)
+          // console.log(this.value)
+          // console.log(this.activeIndex)
+          // console.log(this.realIndex)
+          // console.log(this.$el)
+          const direct = this.touches.diff;
+          // console.log(this.touches.diff)
+          console.log(direct);
+          if (direct) {
+          $.ajax({
+            url: "/update_swipes",
+            method: "post",
+            // datatype: 'script',
+            data: {fid, direct}
+          })
+          }
+        }
+      }
     });
 
     const swiperV = new Swiper('.swiper-container-v', {
@@ -31,3 +61,10 @@ import $ from "jquery"
         // mySwiperV.slideNext();
       }}
     });
+
+    // const slider = document.querySelector('.swiper-container-h').swiper;
+    //  console.log(slider.activeIndex);
+
+    // const sliders = document.querySelector('.card--image');
+    // console.log(sliders);
+

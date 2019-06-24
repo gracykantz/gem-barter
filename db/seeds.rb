@@ -45,6 +45,7 @@ gracy = User.create!(
     last_name: "Kantzabedian",
     email: "gracy@gmail.com",
     password: "123456",
+    avatar_url: "https://avatars2.githubusercontent.com/u/414418?v=4&s=460",
     bio: "Lover of planet and people, cat owner, and always looking to renew and refresh the style of my home.",
     remote_photo_url: "https://i.imgur.com/KXSQEfC.jpg",
   #  average_rating: 0
@@ -62,6 +63,7 @@ furniture_item = gracy.furniture_items.create!(
     last_name: "Verma",
     email: "shalini@gmail.com",
     password: "123456",
+    avatar_url: "https://avatars2.githubusercontent.com/u/414418?v=4&s=460",
     bio: "Reliable and looking to trade!",
     remote_photo_url: "https://i.imgur.com/gheZcFH.jpg",
   #  average_rating: 0
@@ -342,6 +344,24 @@ carey = User.create!(
     remote_photo_url: "https://i.imgur.com/uwcCXUO.jpg",
   #  average_rating: 0
     )
+
+chat_room = ChatRoom.create!(name: "general")
+
+message_1 = Message.create!(
+  content: "Hello",
+  chat_room: chat_room,
+  user: shalini
+)
+message_2 = Message.create!(
+  content: "Hey",
+  chat_room: chat_room,
+  user: gracy
+)
+message_3 = Message.create!(
+  content: "Yo",
+  chat_room: chat_room,
+  user: shalini
+)
 
 # furniture_item = carey.furniture_items.create!(
 #   title: "",

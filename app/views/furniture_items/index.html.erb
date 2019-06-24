@@ -1,20 +1,19 @@
 <p id="notice"><%= notice %></p>
-
 <div class="swiper-mainbody">
   <!-- Swiper -->
   <div class="swiper-container swiper-container-h">
     <div class="swiper-wrapper">
       <% if !@user_furniture.nil? %>
         <% if !@furniture_items.first.nil?%>
-            <% @furniture_items.each do |furniture_item| %>
-              <div class="swiper-slide card--design">
+            <% @furniture_items.each_with_index do |furniture_item, index| %>
+              <div class="swiper-slide card--design" id="swipe-section-<%= index %>" data-furnitureItemId="<%= furniture_item.id %>">
                 <% image = @images.where('furniture_item_id = ?', furniture_item.id) %>
                 <% unless image.nil? %>
                   <% if image.count > 1 %>
                       <div class="swiper-container swiper-container-v">
                       <div class="swiper-wrapper">
                         <% image.each do |i| %>
-                        <div class="swiper-slide" id="section1-<%= i.id %>">
+                        <div class="swiper-slide" data-furnitureItemId="<%= furniture_item.id %>">
                           <%= cl_image_tag i.photo, class: "card--image", crop: :fill %>
                         </div>
                         <% end %>
@@ -22,7 +21,7 @@
                       </div>
                       </div>
                   <% else %>
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" data-furnitureItemId="<%= furniture_item.id %>">
                       <%= cl_image_tag image[0].photo, class: "card--image", crop: :fill %>
                     </div>
                   <% end %>

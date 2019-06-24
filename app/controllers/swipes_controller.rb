@@ -8,6 +8,7 @@ class SwipesController < ApplicationController
     # Create new swipe record
     @swipe = Swipe.new
     @furniture = FurnitureItem.find(params[:furniture_item_id])
+    # raise
   end
 
   def create
@@ -37,7 +38,8 @@ class SwipesController < ApplicationController
         #   @match = Match.new
         #   Match.create!(traded: true)
         # end
-        redirect_to furniture_items_path # update the rendering path
+        @category_id = params[:category_id]
+        redirect_to category_furniture_items_path(@category_id) # update the rendering path
       end
     end
     # end

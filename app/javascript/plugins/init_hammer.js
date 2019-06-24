@@ -11,3 +11,4 @@ hammer.on('press', function(e) {
   console.log("You're pressing me!");
   console.log(e);
 });
+
