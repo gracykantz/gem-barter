@@ -16,5 +16,7 @@ end
   resources :chat_rooms, only: [:show] do
     resource :messages, only: [:show, :new, :create]
   end
+
+  get 'noshow', to: 'chat_rooms#no_show', as: :noshow
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

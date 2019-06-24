@@ -9,6 +9,7 @@ class FurnitureItemsController < ApplicationController
     @images = Image.all
     @swipes = Swipe.all
     @user = User.all
+    # raise
 
     if @swipes.count > 0
       # Call this method to remove the swiped records from the logged in user index list
@@ -49,14 +50,17 @@ class FurnitureItemsController < ApplicationController
 
     # Load swiped records
     swipearr = []
-    swipesrec.each do |s|
-      if s.owned_furniture_item_id == FurnitureItem.find_by_user_id(current_user.id).id # && s.liked == false
-        swipearr << s.wanted_furniture_item_id
+    myfurn = FurnitureItem.find_by_user_id(current_user.id)
+    unless myfurn.nil?
+      swipesrec.each do |s|
+        if s.owned_furniture_item_id == FurnitureItem.find_by_user_id(current_user.id).id # && s.liked == false
+          swipearr << s.wanted_furniture_item_id
+        end
       end
-    end
-    # Remove swiped records from the furnitures index
-    @furnitures = furniture_items.reject do |furniture_item|
-      swipearr.include?(furniture_item.id)
+      # Remove swiped records from the furnitures index
+      @furnitures = furniture_items.reject do |furniture_item|
+        swipearr.include?(furniture_item.id)
+      end
     end
   end
 
@@ -171,6 +175,8 @@ class FurnitureItemsController < ApplicationController
         if !@matchrec.nil?
           # @swipe.match_id = @matchrec.id
           @swipe.update(match_id: @matchrec.id)
+          # create chat Room
+          chat_room = ChatRoom.create!(name: "#{@ownfurniture.user.first_name} - #{@furniture.user.first_name}", status: 'Open')
           puts "print swipe matched record"
           puts @matchrec.id
           puts @swipe.match_id

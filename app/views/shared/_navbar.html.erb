@@ -9,8 +9,15 @@
           <p class="nav-item"><i class="nav_icon fas fa-list-ul"></i></p>
           <% end %>
 
-          <%= link_to messages_index_path, class: "nav-link" do%>
-          <p class="nav-item"><i class="nav_icon far fa-comments"></i></p>
+          <% @chat_room = ChatRoom.where('name LIKE ? AND status = ?', "%#{current_user.first_name}%", 'Open') %>
+          <% if @chat_room.first.nil? %>
+            <%= link_to noshow_path, class: "nav-link" do%>
+            <p class="nav-item"><i class="nav_icon far fa-comments"></i></p>
+            <% end %>
+          <% else %>
+            <%= link_to chat_room_path(@chat_room.first.id), class: "nav-link" do%>
+            <p class="nav-item"><i class="nav_icon far fa-comments"></i></p>
+            <% end %>
           <% end %>
 
 
