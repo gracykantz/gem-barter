@@ -161,6 +161,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         });
       }
     };
+
     //Functions to swipe left elements on logic external action.
     function onActionLeft() {
       if(!(currentPosition >= maxElements)){
@@ -182,7 +183,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     function onActionRight() {
       if(!(currentPosition >= maxElements)){
         if(useOverlays) {
-          console.log ("right");
           rightObj.classList.remove('no-transition');
           topObj.classList.remove('no-transition');
           rightObj.style.zIndex = '8';
@@ -263,7 +263,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
       currentPosition = currentPosition + 1;
       currentPicIndex = 0; //reset image index so that first picture is shown
       countPics();
-      console.log("reset currentPicIndex");
       updateUi();
       currentElement();
       // changeBackground();
@@ -300,7 +299,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           leftObj.classList.remove('no-transition');
           rightObj.classList.remove('no-transition');
           topObj.classList.remove('no-transition');
-          //topObj.classList.remove('no-transition');
+          topObj.classList.remove('no-transition');
         }
         listElNodesObj[currentPosition].classList.remove('no-transition');
         listElNodesObj[currentPosition].style.zIndex = 6;
@@ -358,7 +357,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
             }
 
             requestAnimationFrame(function(){
-
               rightObj.style.transform = "translateX(0) translateY(" + elTrans + "px) translateZ(0)";
               rightObj.style.webkitTransform = "translateX(0) translateY(" + elTrans + "px) translateZ(0)";
               rightObj.style.opacity = '0';
@@ -367,9 +365,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
               topObj.style.webkitTransform = "translateX(0) translateY(" + elTrans + "px) translateZ(0)";
               topObj.style.opacity = '0';
             });
-
           },300);
-
           isFirstTime = false;
         }
       }
@@ -609,6 +605,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
       currentY = evt.changedTouches[0].pageY;
       translateX = currentX - startX;
       translateY = currentY - startY;
+      if (translateY < -100 || translateY > 100) {
+       // return;
+      }
       setOverlayOpacity();
 
       if(!(currentPosition >= maxElements)){
@@ -634,7 +633,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
     function gestureClick(evt) {
-      //alert("click");
+      if (gestureDisabled) {
+        return;
+      };
       if (ttt[currentPosition].length >1) {
         if (currentPicIndex + 1 == ttt[currentPosition].length) {
           currentPicIndex = 0;
@@ -642,12 +643,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         else {
           currentPicIndex ++;
         };
-        console.log(currentPosition);
-        console.log(ttt[currentPosition]);
+
         var f = currentElementObj.querySelector("img");
         f.src = ttt[currentPosition][currentPicIndex]['url'];
-        // currentPosition
-        console.log ("pic index: " +currentPicIndex);
+
       };
     };
 
@@ -699,17 +698,19 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 
     function countPics() {
-      console.log("number of pics: "+ ttt[currentPosition].length);
-      var dots = document.querySelector("#picdots");
-      dots.innerHTML = ttt[currentPosition].length;
-    }
+      // debugger;
+     // console.log("number of pics: "+ ttt[currentPosition].length);
+     // var dots = document.querySelector("#picdots");
+      // dots.value = ttt[currentPosition].length;
+      // dots.innerHTML = ttt[currentPosition].length;
+    };
 
 
     element.addEventListener('touchstart', gestureStart, false);
     element.addEventListener('touchmove', gestureMove, false);
     element.addEventListener('touchend', gestureEnd, false);
-    element.addEventListener('click', gestureClick, false);
-
+    element.addEventListener('click', gestureClick, false);    
+    
     var buttonChat = document.querySelector('#chatBTN');
     buttonChat.addEventListener('click', startChat, false);
     //Add listeners to call global action for swipe cards
@@ -722,8 +723,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
   };
 
-  //buildHTML();
   stackedCards();
-//console.log("ppp: "+ JSON.stringify( ttt));
-
 });
