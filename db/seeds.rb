@@ -1,5 +1,9 @@
 puts "Deleting all previous seeds"
 Image.destroy_all
+Swipe.destroy_all
+Match.destroy_all
+ChatRoom.destroy_all
+Message.destroy_all
 FurnitureItem.destroy_all
 User.destroy_all
 Category.destroy_all
@@ -58,23 +62,6 @@ furniture_item = gracy.furniture_items.create!(
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/Jubpvuu.jpg")
 
- shalini = User.create!(
-    first_name: "Shalini",
-    last_name: "Verma",
-    email: "shalini@gmail.com",
-    password: "123456",
-    avatar_url: "https://i.imgur.com/gheZcFH.jpg",
-    bio: "Reliable and looking to trade!",
-    remote_photo_url: "https://i.imgur.com/gheZcFH.jpg",
-  #  average_rating: 0
-    )
-
-furniture_item = shalini.furniture_items.create!(
-  title: "Eclectic Bird Plate",
-  description: "Beautiful blue plate with two lovebirds",
-  category_id: kitchen.id
-  )
-  photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/kx8Aow1.jpg")
 
 mika = User.create!(
     first_name: "Mika ",
@@ -136,6 +123,23 @@ furniture_item = rose.furniture_items.create!(
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/xE8TdVH.jpg")
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/ZHge72V.jpg")
 
+ shalini = User.create!(
+    first_name: "Shalini",
+    last_name: "Verma",
+    email: "shalini@gmail.com",
+    password: "123456",
+    avatar_url: "https://avatars2.githubusercontent.com/u/414418?v=4&s=460",
+    bio: "Reliable and looking to trade!",
+    remote_photo_url: "https://i.imgur.com/gheZcFH.jpg",
+  #  average_rating: 0
+    )
+
+furniture_item = shalini.furniture_items.create!(
+  title: "Eclectic Bird Plate",
+  description: "Beautiful blue plate with two lovebirds",
+  category_id: kitchen.id
+  )
+  photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/kx8Aow1.jpg")
 
 
 josh = User.create!(
