@@ -1,6 +1,7 @@
 class FurnitureItemsController < ApplicationController
   before_action :set_furniture, only: [:show, :edit, :update, :delete]
   skip_before_action :verify_authenticity_token
+  # before_action :set_counter, only: [:update_swipes]
 
   def index
     # show all furniture items
@@ -17,7 +18,8 @@ class FurnitureItemsController < ApplicationController
       @category = Category.find(params[:category_id])
       # raise
       # Always exclude items owned by the user for Furniture Index
-      if !@category.nil? && @category.id != 1
+      # raise
+      if !@category.nil? && @category.name != "View All"
         @furniture_items = FurnitureItem.where('category_id = ?', @category.id).where.not('user_id = ?', current_user.id)
         # raise
       else
@@ -31,6 +33,7 @@ class FurnitureItemsController < ApplicationController
     if @user_furniture.nil?
       return
     end
+    # raise
   end
 
   # Call this method to remove the swiped records from the logged in user index list
@@ -38,7 +41,7 @@ class FurnitureItemsController < ApplicationController
     @category = Category.find(params[:category_id])
     # raise
     # Always exclude items owned by the user for Furniture Index
-    if !@category.nil? && @category.id != 1
+    if !@category.nil? && @category.name != "View All"
       furniture_items = FurnitureItem.where('category_id = ?', @category.id).where.not('user_id = ?', current_user.id)
     else
       furniture_items = FurnitureItem.where.not('user_id = ?', current_user.id)
@@ -146,28 +149,59 @@ class FurnitureItemsController < ApplicationController
   @furniture = FurnitureItem.find(furniture.id)
   @ownfurniture = FurnitureItem.find_by_user_id(current_user.id)
   # Create a new Swipe record
-  # @existswipes = Swipe.where('owned_furniture_item_id =? AND wanted_furniture_item_id = ?', @ownfurniture.id, @furniture.id)
-  @swipe = Swipe.new(owned_furniture_item_id: @ownfurniture.id, wanted_furniture_item_id: @furniture.id)
-  if direction.to_i.positive?
-    @swipe.liked = true
-  elsif direction.to_i.negative?
-    @swipe.liked = false
-  end
-  # Call method to udpate Owned/ wanted furniture item id on created Swipe record
-  @swipe = update_furniture_item_id(@swipe, @furniture)
-  unless @swipe.wanted_furniture_item_id.nil?
-    if @swipe.save
-      # Find all existing Swipe records
-      @matchrec = create_match(@swipe)
-      if !@matchrec.nil?
-        @swipe.match_id = @matchrec.id
-        @swipe.save!
+  @existswipes = Swipe.where('owned_furniture_item_id = ? AND wanted_furniture_item_id = ?', @ownfurniture.id, @furniture.id)
+  puts "checking swipe"
+  puts @existswipes.first.nil?
+  puts @existswipes.last
+  if @existswipes.first.nil?
+    @swipe = Swipe.new(owned_furniture_item_id: @ownfurniture.id, wanted_furniture_item_id: @furniture.id)
+    if direction.to_i.positive?
+      @swipe.liked = true
+    elsif direction.to_i.negative?
+      @swipe.liked = false
+    end
+    # Call method to udpate Owned/ wanted furniture item id on created Swipe record
+    @swipe = update_furniture_item_id(@swipe, @furniture)
+    unless @swipe.wanted_furniture_item_id.nil?
+      if @swipe.save
+        # Find all existing Swipe records
+        @matchrec = create_match(@swipe)
+        puts "creating match"
+        puts !@matchrec.nil?
+        if !@matchrec.nil?
+          # @swipe.match_id = @matchrec.id
+          @swipe.update(match_id: @matchrec.id)
+          puts "print swipe matched record"
+          puts @matchrec.id
+          puts @swipe.match_id
+          # @swipe.save!
+        end
+        #@category_id = params[:category_id]
+        # redirect_to category_furniture_items_path(@furniture.category_id) # update the rendering path
       end
-      #@category_id = params[:category_id]
-      # redirect_to category_furniture_items_path(@furniture.category_id) # update the rendering path
+    end
+  # render js: "window.location.reload()"
+  end
+  # logic to delete the duplicate swipe created on post call
+  puts "own furniture id"
+  puts @ownfurniture.id
+  puts "wanted furniture id"
+  puts @furniture.id
+  @existswipes = Swipe.where('owned_furniture_item_id = ? AND wanted_furniture_item_id = ?', @ownfurniture.id, @furniture.id)
+  puts @existswipes.length
+  if @existswipes.length > 1
+  @delswipe = @existswipes.last
+  @delswipe.destroy!
+  end
+
+  @matches = Match.all
+  @matches.each do |m|
+    @existmatch = Swipe.where('match_id = ?', m.id)
+    if @existmatch.first.nil?
+      m.destroy!
     end
   end
-  # render js: "window.location.reload()"
+
   redirect_to category_furniture_items_path(@furniture.category_id)
   end
 
@@ -194,8 +228,10 @@ class FurnitureItemsController < ApplicationController
     if @existswipes.count > 0
       @match = Match.new
       @match = Match.create!(traded: true)
-      @existswipes.match_id = @match.id
-      @existswipes.save!
+      # @existswipes.match_id = @match.id
+      @existswipes.each do |s|
+        s.update(match_id: @match.id)
+      end
     end
     return @match
   end

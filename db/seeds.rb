@@ -32,7 +32,7 @@ office = Category.create!(
 
 pets = Category.create!(
   name: "Pet Accessories",
-  remote_photo_url: "https://askgramps.org/files/2016/08/pets1.jpg"
+  remote_photo_url: "https://i.imgur.com/fzsfTi6.jpg" #{}"https://askgramps.org/files/2016/08/pets1.jpg"
   )
 
 outdoor = Category.create!(

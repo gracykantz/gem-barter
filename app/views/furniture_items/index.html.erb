@@ -1,4 +1,3 @@
-
 <% ppp = {} %>
 
 <div class="stage">
@@ -8,7 +7,7 @@
       <% @furniture_items.each_with_index do |furniture_item, item| %>
         <% image = @images.where('furniture_item_id = ?', furniture_item.id) %>
         <% unless image.nil? %>
-          <div class="card">
+          <div class="card" data-furnitureitemid="<%= furniture_item.id %>">
             <div class="card-content">
               <div class="card-image">
 
