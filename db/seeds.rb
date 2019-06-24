@@ -45,7 +45,7 @@ gracy = User.create!(
     last_name: "Kantzabedian",
     email: "gracy@gmail.com",
     password: "123456",
-    avatar_url: "https://avatars2.githubusercontent.com/u/414418?v=4&s=460",
+    avatar_url: "https://i.imgur.com/KXSQEfC.jpg",
     bio: "Lover of planet and people, cat owner, and always looking to renew and refresh the style of my home.",
     remote_photo_url: "https://i.imgur.com/KXSQEfC.jpg",
   #  average_rating: 0
@@ -63,7 +63,7 @@ furniture_item = gracy.furniture_items.create!(
     last_name: "Verma",
     email: "shalini@gmail.com",
     password: "123456",
-    avatar_url: "https://avatars2.githubusercontent.com/u/414418?v=4&s=460",
+    avatar_url: "https://i.imgur.com/gheZcFH.jpg",
     bio: "Reliable and looking to trade!",
     remote_photo_url: "https://i.imgur.com/gheZcFH.jpg",
   #  average_rating: 0
@@ -81,6 +81,7 @@ mika = User.create!(
     last_name: "Bettanin",
     email: "mika@gmail.com",
     password: "123456",
+    avatar_url: "",
     bio: "Love refreshing my place, and meeting new people",
     remote_photo_url: "",
   #  average_rating: 0
@@ -100,6 +101,7 @@ edwin = User.create!(
     last_name: "Mukelyan",
     email: "edwin@gmail.com",
     password: "123456",
+    avatar_url: "https://i.imgur.com/ZKcBGtA.jpg",
     bio: "Into antique furniture with a long history.",
     remote_photo_url: "https://i.imgur.com/ZKcBGtA.jpg",
   #  average_rating: 0
@@ -120,6 +122,7 @@ rose = User.create!(
     last_name: "Morgans",
     email: "rose@gmail.com",
     password: "123456",
+    avatar_url: "https://i.imgur.com/Sliu9Co.jpg",
     bio: "I have a beautiful daughter, and another one on the way. Looking for great finds for my kids!",
     remote_photo_url: "https://i.imgur.com/Sliu9Co.jpg",
   #  average_rating: 0
@@ -140,6 +143,7 @@ josh = User.create!(
     last_name: "Cassista",
     email: "josh@gmail.com",
     password: "123456",
+    avatar_url: "",
     bio: "Happy father of two",
     remote_photo_url: "",
   #  average_rating: 0
@@ -158,6 +162,7 @@ ludvig = User.create!(
     last_name: "Londos",
     email: "ludvig@gmail.com",
     password: "123456",
+    avatar_url: "https://i.imgur.com/uUgORdr.jpg",
     bio: "I like Magic the Gathering, and disappointing my friends.",
     remote_photo_url: "https://i.imgur.com/uUgORdr.jpg",
   #  average_rating: 0
@@ -176,6 +181,7 @@ alyssa = User.create!(
     last_name: "Kantzabedian",
     email: "alyssa@gmail.com",
     password: "123456",
+    avatar_url: "https://i.imgur.com/NBQC65H.jpg",
     bio: "",
     remote_photo_url: "https://i.imgur.com/NBQC65H.jpg",
   #  average_rating: 0
@@ -345,23 +351,23 @@ carey = User.create!(
   #  average_rating: 0
     )
 
-chat_room = ChatRoom.create!(name: "general")
+# chat_room = ChatRoom.create!(name: "general")
 
-message_1 = Message.create!(
-  content: "Hello",
-  chat_room: chat_room,
-  user: shalini
-)
-message_2 = Message.create!(
-  content: "Hey",
-  chat_room: chat_room,
-  user: gracy
-)
-message_3 = Message.create!(
-  content: "Yo",
-  chat_room: chat_room,
-  user: shalini
-)
+# message_1 = Message.create!(
+#   content: "Hello",
+#   chat_room: chat_room,
+#   user: shalini
+# )
+# message_2 = Message.create!(
+#   content: "Hey",
+#   chat_room: chat_room,
+#   user: gracy
+# )
+# message_3 = Message.create!(
+#   content: "Yo",
+#   chat_room: chat_room,
+#   user: shalini
+# )
 
 # furniture_item = carey.furniture_items.create!(
 #   title: "",
