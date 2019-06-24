@@ -14,15 +14,18 @@
       <% else %>
       <%= f.association :category %>
         <div class="field">
-          <%= p.label :photo %><br>
-          <%= p.file_field :photo, :multiple => true, name: "images[photo][]", accept:"image/*;capture=camera"  %>
+          <%= p.label :photo, class: "btn btn-success" do %>
+            <%= p.file_field :photo, as: :hidden, :multiple => true, name: "images[photo][]", accept:"image/*;capture=camera", style:"display: none;"%>
+            Upload your photo
+          <% end %>
+
         </div>
       <% end %>
    <% end %>
   </div>
   <br>
   <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-primary" %>
+    <%= f.button :submit, class: "btn btn-primary", value: "Let's get trading!"%>
   </div>
 <% end %>
 
