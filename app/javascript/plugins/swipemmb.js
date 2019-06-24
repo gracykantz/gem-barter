@@ -241,6 +241,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //Swipe active card to left.
     function onSwipeLeft() {
+        const direct = -1;
+        $.ajax({
+          url: "/update_swipes",
+          method: "post",
+          data: {fid, direct}
+          })
       removeNoTransition();
       transformUi(-1000, 0, 0, currentElementObj);
       if(useOverlays){
