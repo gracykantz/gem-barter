@@ -19,9 +19,7 @@ var initSweetalert = function initSweetalert(selector) {
 };
 
 function notTest(id) {
-  var avatarId = "#sweet-alert-demo" + id
-  console.log(avatarId);
-initSweetalert(avatarId, {
+initSweetalert("#" + id, {
   title: "A nice alert",
   text: "This is a great alert, isn't it?",
   icon: "success"
