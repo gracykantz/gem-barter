@@ -91,7 +91,7 @@
  .card-titles {
    position: absolute;
    bottom: 0;
-   padding: 40px 30px;
+
  }
 
  .card-footer {
@@ -103,15 +103,16 @@
            justify-content: center;
    -webkit-box-align: center;
        -ms-flex-align: center;
-           align-items: center;
-   padding: 25px 35px;
+   height: 175px;
+   padding: 0;
  }
 
- .popular-destinations-text {
+ .card-body {
    font-size: 16px;
    /*font-weight: 400;*/
-   color: #8E9AA4;
+   color: $danger;
    width: 100%;
+   font-family: $headers-font
    /*min-width: 110px;*/
  }
 
