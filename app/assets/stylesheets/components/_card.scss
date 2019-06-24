@@ -11,7 +11,7 @@
 .card--title {
   color: $danger;
   font-family: $headers-font;
-  font-weight: bold;
+  font-size: 21px;
 
 }
 
@@ -19,4 +19,16 @@
   color: $primary;
   font-family: $body-font;
 
+}
+
+.card--avatar {
+  position: absolute;
+  top: -28px;
+  right: 14px;
+}
+
+.card--description {
+  color: $primary;
+  font-family: $body-font;
+  font-size: 18px;
 }

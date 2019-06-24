@@ -18,13 +18,16 @@
 
                 <%= cl_image_tag image[0].photo, class: "card--image" %>
               </div>
-              <div class="card-titles"></div>
+
             </div>
             <div class="card-footer">
 
-              <div class="card-body"><%= furniture_item.title %></div>
+              <div class="card-body">
+                <h3 class="card--title"><%= furniture_item.title %></h3>
+                <p class= "card--description"><%= furniture_item.description %></p>
+               </div>
               <div>
-                <%= cl_image_tag furniture_item.user.photo, width: 1700, height: 1700, crop: "crop", gravity: "face", class: "avatar card--avatar", id:"sweet-alert-demo"  %>
+                <%= cl_image_tag furniture_item.user.photo, width: 1700, height: 1700, crop: "crop", gravity: "face", id:"sweet-alert-demo#{furniture_item.id}", class: "avatar card--avatar", :onClick => "notTest(this.id);"  %>
               </div>
             </div>
           </div>
