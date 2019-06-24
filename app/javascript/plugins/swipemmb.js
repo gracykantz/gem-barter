@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var elTrans;
     var currentPicIndex = 0;
     var gestureDisabled = false;
+    var fid = 0;
 
     obj = document.getElementById('stacked-cards-block');
     stackedCardsObj = obj.querySelector('.stackedcards-container');
@@ -141,6 +142,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //Keep the active card.
     function currentElement() {
       currentElementObj = listElNodesObj[currentPosition];
+      console.log("CurrentElement function");
+      console.log(currentElementObj);
+      console.log(currentElementObj.dataset.furnitureitemid);
+      fid = currentElementObj.dataset.furnitureitemid;
+      // const furniturecard = document.querySelector(".card");
+      // console.log('print this dataset');
+      // console.log(furniturecard.dataset);
     };
 
     //Change background for each swipe.
@@ -163,23 +171,40 @@ document.addEventListener("DOMContentLoaded", function(event) {
     };
 
     //Functions to swipe left elements on logic external action.
-    function onActionLeft() {
-      if(!(currentPosition >= maxElements)){
-        if(useOverlays) {
-          leftObj.classList.remove('no-transition');
-          topObj.classList.remove('no-transition');
-          leftObj.style.zIndex = '8';
-          transformUi(0, 0, 1, leftObj);
-        }
+    // function onActionLeft() {
+    //   if(!(currentPosition >= maxElements)){
+    //     if(useOverlays) {
+    //       leftObj.classList.remove('no-transition');
+    //       topObj.classList.remove('no-transition');
+    //       leftObj.style.zIndex = '8';
+    //       transformUi(0, 0, 1, leftObj);
+    //     }
 
-        setTimeout(function() {
-          onSwipeLeft();
-          resetOverlayLeft();
-        },300);
-      }
-    };
+    //     setTimeout(function() {
+    //       onSwipeLeft();
+    //       resetOverlayLeft();
+    //     },300);
+    //   }
+    // };
 
     //Functions to swipe right elements on logic external action.
+
+    // function onActionRight() {
+    //   if(!(currentPosition >= maxElements)){
+    //     if(useOverlays) {
+    //       rightObj.classList.remove('no-transition');
+    //       topObj.classList.remove('no-transition');
+    //       rightObj.style.zIndex = '8';
+    //       transformUi(0, 0, 1, rightObj);
+    //     }
+
+    //     setTimeout(function(){
+    //       onSwipeRight();
+    //       resetOverlayRight();
+    //     },300);
+    //   }
+    // };
+
     function onActionRight() {
       if(!(currentPosition >= maxElements)){
         if(useOverlays) {
@@ -195,6 +220,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         },300);
       }
     };
+
 
     //Functions to swipe top elements on logic external action.
     function onActionTop() {
@@ -225,6 +251,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       currentPosition = currentPosition + 1;
       currentPicIndex = 0; //reset image index so that first picture is shown
       countPics();
+      console.log('in Swipe left function');
       updateUi();
       currentElement();
       // changeBackground();
@@ -247,6 +274,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     //Swipe active card to right.
     function onSwipeRight() {
+      const direct = 1;
+        $.ajax({
+          url: "/update_swipes",
+          method: "post",
+          data: {fid, direct}
+          })
       if (currentPosition == 2) { // it's a match
         backToMiddle();
         showMatchOverlay();
@@ -263,6 +296,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
       currentPosition = currentPosition + 1;
       currentPicIndex = 0; //reset image index so that first picture is shown
       countPics();
+
+      console.log("reset currentPicIndex");
+      console.log('In swipe right function');
+      console.log(this);
+
       updateUi();
       currentElement();
       // changeBackground();
@@ -709,8 +747,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     element.addEventListener('touchstart', gestureStart, false);
     element.addEventListener('touchmove', gestureMove, false);
     element.addEventListener('touchend', gestureEnd, false);
-    element.addEventListener('click', gestureClick, false);    
-    
+
+    element.addEventListener('click', gestureClick, false);
+
     var buttonChat = document.querySelector('#chatBTN');
     buttonChat.addEventListener('click', startChat, false);
     //Add listeners to call global action for swipe cards

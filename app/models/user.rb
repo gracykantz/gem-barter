@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_many :reviews
   has_many :furniture_items
   validates :first_name, presence: true

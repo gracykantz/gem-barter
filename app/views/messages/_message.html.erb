@@ -1,0 +1,5 @@
+<!-- app/views/messages/_message.html.erb -->
+<div class="message <%= user_is_messages_author ? "right" : "" %>">
+  <%= image_tag message.user.avatar_url, class: "avatar" %>
+  <div class="message-content"><%= message.content %></div>
+</div>
