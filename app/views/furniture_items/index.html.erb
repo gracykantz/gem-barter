@@ -21,11 +21,10 @@
               <div class="card-titles"></div>
             </div>
             <div class="card-footer">
-              <div class="popular-destinations-text"><%= furniture_item.title %></div>
 
+              <div class="card-body"><%= furniture_item.title %></div>
               <div>
-                <%= cl_image_tag furniture_item.user.photo, width: 1700, height: 1700,:crop=>"crop", :gravity=>"face", class: "avatar card--avatar", id: "sweet-alert-demo" %>
-
+                <%= cl_image_tag furniture_item.user.photo, width: 1700, height: 1700, crop: "crop", gravity: "face", class: "avatar card--avatar", id:"sweet-alert-demo"  %>
               </div>
             </div>
           </div>
