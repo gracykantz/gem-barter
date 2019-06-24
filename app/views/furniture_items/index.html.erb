@@ -22,8 +22,8 @@
             </div>
             <div class="card-footer">
               <div class="popular-destinations-text"><%= furniture_item.title %></div>
-              <div> 
-                <img <%= cl_image_tag furniture_item.user.photo, width: 1700, height: 1700,:crop=>"crop", :gravity=>"face", class: "avatar card--avatar"%>
+              <div>
+                <%= cl_image_tag furniture_item.user.photo, width: 1700, height: 1700,:crop=>"crop", :gravity=>"face", class: "avatar card--avatar"%>
               </div>
             </div>
           </div>
