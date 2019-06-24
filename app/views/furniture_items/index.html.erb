@@ -1,8 +1,9 @@
 <% ppp = {} %>
-
+<% if !@user_furniture.nil? %>
+<% if !@furniture_items.first.nil? %>
 <div class="stage">
-
   <div id="stacked-cards-block" class="stackedcards stackedcards--animatable init">
+
     <div class="stackedcards-container">
       <% @furniture_items.each_with_index do |furniture_item, item| %>
         <% image = @images.where('furniture_item_id = ?', furniture_item.id) %>
@@ -28,12 +29,11 @@
                </div>
               <div>
                 <%= cl_image_tag furniture_item.user.photo, width: 1700, height: 1700, crop: "crop", gravity: "face", id:"sweet-alert-demo#{furniture_item.id}", class: "avatar card--avatar", :onClick => "notTest(this.id);"  %>
+
               </div>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
+            <% end %>
+          <% end %>
+      </div>
 
     <!--div class="stackedcards--animatable stackedcards-overlay" style="opacity: 0.5;" id="picdots"></div-->
     <div class="stackedcards--animatable stackedcards-overlay top"><img src="https://image.ibb.co/m1ykYS/rank_army_star_2_3x.png"  width="auto" height="auto"></div>
@@ -52,6 +52,18 @@
   </div>
 </div>
 
+  <% else %><br><br><br>
+    <center><b>&nbsp&nbsp<p class="card--content">No items at the moment, you will have it soon to trade</p></b></center>
+  <% end %>
+<% else %><br><br><br><br>
+  <center><b><p class="card--content">Add your Furniture to begin Trading!!</p></b></center><br><br>
+  <% @category = Category.find_by_name("View All") %>
+    <%= link_to new_furniture_item_path do %>
+      <button class="btn btn-success button--spacing editfurniture--button">Add Furniture to begin trade</button>
+    <% end %>
+<% end %>
+
+
+
 
 <script> var ttt = <%= ppp.to_json.html_safe %>;</script>
-
