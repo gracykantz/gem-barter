@@ -1,7 +1,8 @@
 import "bootstrap";
 import Swiper from 'swiper';
-import $ from "jquery"
+import $ from "jquery";
 
+import "../plugins/swipemmb";
 
     const swiperH = new Swiper('.swiper-container-h', {
       spaceBetween: 250,
