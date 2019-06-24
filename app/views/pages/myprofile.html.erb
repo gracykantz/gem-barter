@@ -23,7 +23,7 @@
       <%= link_to edit_furniture_item_path(furniture_item) do %>
       <button class="btn btn-success button--spacing editfurniture--button">Edit your item</button>
       <% end %>
-
+      <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
       <br>
 
       <%= link_to "Delete your item", furniture_item_path(furniture_item), class: "btn btn-danger button--spacing traded--button",
