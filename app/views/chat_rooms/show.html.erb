@@ -27,9 +27,9 @@
     App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create({ channel: 'ChatRoomsChannel', chat_room_id: <%= @chat_room.id %> }, {
       received: (data) => {
         console.log(data)
-
+        if (data.current_user_id !== <%= current_user.id %>) {
           const messagesContainer = document.querySelector('.messages');
-          // messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+           messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);}
           scrollLastMessageIntoView();
 
       }

@@ -1,6 +1,5 @@
 //= require rails-ujs
 //= require_tree .
-//= require ./cable.js
 console.log("hello")
 
 
