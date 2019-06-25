@@ -13,17 +13,17 @@ class FurnitureItemsController < ApplicationController
     @mf = FurnitureItem.where('user_id = ?', current_user.id).order(id: :asc)
     if @mf.first.present?
       @mf.each do |f|
-      if f.matched_to_id.present?
-      @em = Match.find(f.matched_to_id)
-      if @em.present?
-        if @em.traded == true
-          @matched = true
-        else
-          @matched = false
-          @currentchat = ChatRoom.find_by(match_id: f.matched_to_id)
+        if f.matched_to_id.present?
+        @em = Match.find(f.matched_to_id)
+          if @em.present?
+            if @em.traded == true
+              @matched = true
+            else
+              @matched = false
+              @currentchat = ChatRoom.find_by(match_id: f.matched_to_id)
+            end
+          end
         end
-      end
-      end
       end
     end
     # raise
@@ -31,6 +31,7 @@ class FurnitureItemsController < ApplicationController
     if @swipes.count > 0
       # Call this method to remove the swiped records from the logged in user index list
       @furniture_items = update_furniture_items(@swipes)
+      # raise
     else
       # @furniture_items = FurnitureItem.where.not('user_id = ?', current_user.id)
       @category = Category.find(params[:category_id])
@@ -77,7 +78,7 @@ class FurnitureItemsController < ApplicationController
     myfurn = FurnitureItem.find_by_user_id(current_user.id)
     unless myfurn.nil?
       swipesrec.each do |s|
-        if s.owned_furniture_item_id == FurnitureItem.find_by_user_id(current_user.id).id # && s.liked == false
+        if s.owned_furniture_item_id == FurnitureItem.find_by_user_id(current_user.id).id || s.match_id.present?
           swipearr << s.wanted_furniture_item_id
         end
       end
@@ -86,6 +87,7 @@ class FurnitureItemsController < ApplicationController
         swipearr.include?(furniture_item.id)
       end
     end
+    # raise
     return @furnitures
   end
 

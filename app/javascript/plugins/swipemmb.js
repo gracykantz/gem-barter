@@ -147,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       console.log(currentElementObj);
       console.log(currentElementObj.dataset.furnitureitemid);
       fid = currentElementObj.dataset.furnitureitemid;
+      console.log("Chat ID data");
       console.log(currentElementObj.dataset.chatid);
       // const furniturecard = document.querySelector(".card");
       // console.log('print this dataset');
