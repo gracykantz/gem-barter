@@ -68,9 +68,9 @@ mika = User.create!(
     last_name: "Bettanin",
     email: "mika@gmail.com",
     password: "123456",
-    avatar_url: "",
+    avatar_url: "https://education.fsu.edu/wp-content/uploads/2016/09/staff-avatar-man.png",
     bio: "Love refreshing my place, and meeting new people",
-    remote_photo_url: "",
+    remote_photo_url: "https://education.fsu.edu/wp-content/uploads/2016/09/staff-avatar-man.png",
   #  average_rating: 0
     )
 
@@ -147,9 +147,9 @@ josh = User.create!(
     last_name: "Cassista",
     email: "josh@gmail.com",
     password: "123456",
-    avatar_url: "",
+    avatar_url: "https://education.fsu.edu/wp-content/uploads/2016/09/staff-avatar-man.png",
     bio: "Happy father of two",
-    remote_photo_url: "",
+    remote_photo_url: "https://education.fsu.edu/wp-content/uploads/2016/09/staff-avatar-man.png",
   #  average_rating: 0
     )
 
@@ -204,6 +204,7 @@ lucy = User.create!(
     last_name: "Gezalian",
     email: "lucy@gmail.com",
     password: "123456",
+    avatar_url: "https://i.imgur.com/M7LmDwb.jpg",
     bio: "Lover of cats and girls and I like to collect weird interesting pieces for my place, added bonus if it is anything mythology related",
     remote_photo_url: "https://i.imgur.com/M7LmDwb.jpg",
   #  average_rating: 0
@@ -223,8 +224,9 @@ dom = User.create!(
     last_name: "Kim",
     email: "dom@gmail.com",
     password: "123456",
+    avatar_url: "https://i.imgur.com/Jd7TWTo.jpg",
     bio: "",
-    remote_photo_url: "https://i.imgur.com/M7LmDwb.jpg",
+    remote_photo_url: "https://i.imgur.com/Jd7TWTo.jpg",
   #  average_rating: 0
     )
 
@@ -241,6 +243,7 @@ magda = User.create!(
     last_name: "Kochanowicz",
     email: "magda@gmail.com",
     password: "123456",
+    avatar_url: "https://i.imgur.com/WHU7PWg.jpg",
     bio: "Happy mother of two amazing girls, working on living sustainably so they can have a better planet to live on.",
     remote_photo_url: "https://i.imgur.com/WHU7PWg.jpg",
   #  average_rating: 0
@@ -260,6 +263,7 @@ drazen = User.create!(
     last_name: "Vukovic",
     email: "drazen@gmail.com",
     password: "123456",
+    avatar_url: "https://i.imgur.com/pe3OuGV.jpg",
     bio: "",
     remote_photo_url: "https://i.imgur.com/pe3OuGV.jpg",
   #  average_rating: 0
@@ -278,6 +282,7 @@ oscar = User.create!(
     last_name: "Nilestam",
     email: "oscar@gmail.com",
     password: "123456",
+    avatar_url: "https://i.imgur.com/17hXBzb.jpg",
     bio: "I really like chicken wings",
     remote_photo_url: "https://i.imgur.com/17hXBzb.jpg",
   #  average_rating: 0
@@ -296,6 +301,7 @@ jane = User.create!(
     last_name: "Tilly",
     email: "jane@gmail.com",
     password: "123456",
+    avatar_url: "https://i.imgur.com/23fEv78.jpg",
     bio: "Redecorating my summer house and looking for antique items",
     remote_photo_url: "https://i.imgur.com/23fEv78.jpg",
   #  average_rating: 0
@@ -314,6 +320,7 @@ olga = User.create!(
     last_name: "Samunova",
     email: "olga@gmail.com",
     password: "123456",
+    avatar_url: "https://i.imgur.com/mm0WqBN.jpg",
     bio: "Love to travel and explore new places, and collect things from interesting areas.",
     remote_photo_url: "https://i.imgur.com/mm0WqBN.jpg",
   #  average_rating: 0
@@ -332,6 +339,7 @@ laura = User.create!(
     last_name: "Dai",
     email: "laura@gmail.com",
     password: "123456",
+    avatar_url: "https://i.imgur.com/pPar5l2.jpg",
     bio: "",
     remote_photo_url: "https://i.imgur.com/pPar5l2.jpg",
   #  average_rating: 0
@@ -350,6 +358,7 @@ carey = User.create!(
     last_name: "Hinton",
     email: "carey@gmail.com",
     password: "123456",
+    avatar_url: "https://i.imgur.com/uwcCXUO.jpg",
     bio: "Cat mom and avid gamer, looking for cool things for my office.",
     remote_photo_url: "https://i.imgur.com/uwcCXUO.jpg",
   #  average_rating: 0
