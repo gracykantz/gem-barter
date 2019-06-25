@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_24_210254) do
+ActiveRecord::Schema.define(version: 2019_06_25_091647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,14 @@ ActiveRecord::Schema.define(version: 2019_06_24_210254) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "review"
+    t.integer "user_reviewed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_reviewing_id"
+  end
+
   create_table "swipes", force: :cascade do |t|
     t.boolean "liked"
     t.bigint "owned_furniture_item_id"
@@ -101,6 +109,8 @@ ActiveRecord::Schema.define(version: 2019_06_24_210254) do
   add_foreign_key "images", "furniture_items"
   add_foreign_key "messages", "chat_rooms"
   add_foreign_key "messages", "users"
+  add_foreign_key "reviews", "users", column: "user_reviewed_id"
+  add_foreign_key "reviews", "users", column: "user_reviewing_id"
   add_foreign_key "swipes", "furniture_items", column: "owned_furniture_item_id"
   add_foreign_key "swipes", "furniture_items", column: "wanted_furniture_item_id"
   add_foreign_key "swipes", "matches"
