@@ -8,7 +8,24 @@ class FurnitureItemsController < ApplicationController
     puts "again"
     @images = Image.all
     @swipes = Swipe.all
+    @matches = Match.all
     @user = User.all
+    @mf = FurnitureItem.where('user_id = ?', current_user.id).order(id: :asc)
+    if @mf.first.present?
+      @mf.each do |f|
+      if f.matched_to_id.present?
+      @em = Match.find(f.matched_to_id)
+      if @em.present?
+        if @em.traded == true
+          @matched = true
+        else
+          @matched = false
+          @currentchat = ChatRoom.find_by(match_id: f.matched_to_id)
+        end
+      end
+      end
+      end
+    end
     # raise
 
     if @swipes.count > 0
@@ -21,10 +38,17 @@ class FurnitureItemsController < ApplicationController
       # Always exclude items owned by the user for Furniture Index
       # raise
       if !@category.nil? && @category.name != "View All"
-        @furniture_items = FurnitureItem.where('category_id = ?', @category.id).where.not('user_id = ?', current_user.id)
+        @furniture_its = FurnitureItem.where('category_id = ?', @category.id).where.not('user_id = ?', current_user.id)
+
+        @furniture_items = @furniture_its.reject do |f|
+          @matches.include?(f.matched_to_id)
+        end
         # raise
       else
-        @furniture_items = FurnitureItem.where.not('user_id = ?', current_user.id)
+        @furniture_its = FurnitureItem.where.not('user_id = ?', current_user.id)
+        @furniture_items = @furniture_its.reject do |f|
+          @matches.include?(f.matched_to_id)
+        end
         # raise
       end
     end
@@ -62,15 +86,20 @@ class FurnitureItemsController < ApplicationController
         swipearr.include?(furniture_item.id)
       end
     end
+    return @furnitures
   end
 
   def mark_traded
     @furniture = FurnitureItem.find_by_user_id(current_user.id)
-    @swipe = Swipe.find_by(owned_furniture_item_id: @furniture.id)
+    @chat = ChatRoom.where('name LIKE ? AND status = ?', "%#{current_user.first_name}%", 'Open')
+    @swipe = Swipe.find_by(match_id: @chat.first.match_id)
     if !@swipe.nil?
       @match = Match.find_by(id: @swipe.match_id)
+      # raise
       if !@match.nil?
         @match.update(traded: true)
+        @chat_room = ChatRoom.find_by(match_id: @match.id)
+        @chat_room.update(status: 'Closed')
         if @match.save!
           redirect_to myprofile_path
         end
@@ -176,7 +205,10 @@ class FurnitureItemsController < ApplicationController
           # @swipe.match_id = @matchrec.id
           @swipe.update(match_id: @matchrec.id)
           # create chat Room
-          chat_room = ChatRoom.create!(name: "#{@ownfurniture.user.first_name} - #{@furniture.user.first_name}", status: 'Open')
+          chat_room = ChatRoom.create!(name: "#{@ownfurniture.user.first_name} - #{@furniture.user.first_name}", status: 'Open', match_id: @matchrec.id)
+          # update furniture match id
+          @ownfurniture.update(matched_to_id: @matchrec.id)
+          @furniture.update(matched_to_id: @matchrec.id)
           puts "print swipe matched record"
           puts @matchrec.id
           puts @swipe.match_id
@@ -233,7 +265,8 @@ class FurnitureItemsController < ApplicationController
     # If such Swipe record exist, create a match
     if @existswipes.count > 0
       @match = Match.new
-      @match = Match.create!(traded: true)
+      # @match = Match.create!(traded: true)
+      @match.save!
       # @existswipes.match_id = @match.id
       @existswipes.each do |s|
         s.update(match_id: @match.id)

@@ -2,7 +2,7 @@
   font-size: 14px;
   color: #868686;
   background-color: #ffffff;
-  padding: 20px;
+  padding: 10px;
   border: 1px solid #ececec;
   border-top: none;
   border-bottom-width: 0;
@@ -53,7 +53,7 @@ input.form-control {
   }
 }
 .chat-header {
-  background-color: #4F2F4C;
+  background-color: $success; //#4F2F4C;
   color: white;
   padding: 10px 20px;
   margin-top: 10px;
@@ -61,3 +61,4 @@ input.form-control {
     margin: 0;
   }
 }
+

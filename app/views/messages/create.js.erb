@@ -1,0 +1,27 @@
+function insertMessage(message) {
+  const messagesContainer = document.querySelector('.messages');
+  messagesContainer.insertAdjacentHTML('beforeend', message);
+  const input = document.querySelector('#message_content');
+  input.value = '';
+  input.blur();
+  scrollLastMessageIntoView();
+}
+
+function scrollLastMessageIntoView() {
+    console.log("test");
+  const messages = document.querySelectorAll('.message');
+  const lastMessage = messages[messages.length - 1];
+
+    if (lastMessage !== undefined) {
+      console.log("inside");
+      lastMessage.scrollIntoView();
+    }
+  }
+
+<% if @message.errors.any? %>
+  // handle validation errors later
+<% else %>
+  insertMessage('<%= j render "message", message: @message, user_is_messages_author: true %>');
+<% end %>
+
+

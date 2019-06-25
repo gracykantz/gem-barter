@@ -9,6 +9,7 @@ console.log("hello")
 var initSweetalert = function initSweetalert(selector) {
   var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var swalButton = document.querySelector(selector);
+  console.log(swalButton);
 
   if (swalButton) {
     // protect other pages
