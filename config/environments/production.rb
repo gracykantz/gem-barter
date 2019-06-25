@@ -68,7 +68,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "gem-barter_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
-    config.action_cable.url = "wss://www.gem-bartering-made-easy.herokuapp.com/cable"
+    config.action_cable.url = "wss://gem-bartering-made-easy.herokuapp.com/cable"
   config.action_cable.allowed_request_origins = [ "https://www.gem-bartering-made-easy.herokuapp.com", "/http:\/\/gem-bartering-made-easy.herokuapp.com.*/" ]
 
   # Ignore bad email addresses and do not raise email delivery errors.
