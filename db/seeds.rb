@@ -128,7 +128,7 @@ furniture_item = rose.furniture_items.create!(
     last_name: "Verma",
     email: "shalini@gmail.com",
     password: "123456",
-    avatar_url: "https://avatars2.githubusercontent.com/u/414418?v=4&s=460",
+    avatar_url: "https://i.imgur.com/gheZcFH.jpg",
     bio: "Reliable and looking to trade!",
     remote_photo_url: "https://i.imgur.com/gheZcFH.jpg",
   #  average_rating: 0
