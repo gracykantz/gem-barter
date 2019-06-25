@@ -19,5 +19,6 @@ end
 
   get 'noshow', to: 'chat_rooms#no_show', as: :noshow
   get 'messages/show_all', to: 'messages#show_history', as: :show_history
+  mount ActionCable.server => "/cable"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

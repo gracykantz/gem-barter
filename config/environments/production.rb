@@ -5,6 +5,7 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
+
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
@@ -48,6 +49,8 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+  config.action_cable.url = "wss://gem-bartering-made-easy.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = ["http://gem-bartering-made-easy.herokuapp.com", "https://gem-bartering-made-easy.herokuapp.com"]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -95,3 +98,4 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 end
+
