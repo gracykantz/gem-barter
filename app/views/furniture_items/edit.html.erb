@@ -1,6 +1,8 @@
-<h1 class="Furniture-new-title">Share Your Furniture</h1>
-<%= render 'form', furniture_item: @furniture %>
+<div class="container">
+  <h1 class="Furniture-new-title">Share Your Furniture</h1>
+  <%= render 'form', furniture_item: @furniture %>
+  </div>
+  <%= link_to myprofile_path do %>
+    <i class="fas fa-chevron-left back-button"></i>
+  <% end %>
 </div>
-<%= link_to myprofile_path do %>
-  <i class="fas fa-chevron-left back-button"></i>
-<% end %>

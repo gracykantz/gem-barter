@@ -4,7 +4,17 @@ class PagesController < ApplicationController
   end
 
   def myprofile
-    current_user.id
+    @reviews = Review.where("user_reviewed_id = ?", current_user.id)
+    @review = 0
+    stars = 0
+    if @reviews.count.positive?
+      @reviews.each do |review|
+        stars += review.review
+      end
+      @review = (stars / @reviews.count).round
+    end
+
+    # current_user.id
     furniture_item = FurnitureItem.find_by_user_id(current_user.id)
     if furniture_item.nil?
       @trade = 'a'
