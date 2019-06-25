@@ -224,7 +224,7 @@ dom = User.create!(
     email: "dom@gmail.com",
     password: "123456",
     bio: "",
-    remote_photo_url: "https://i.imgur.com/Jd7TWTo.jpg",
+    remote_photo_url: "https://i.imgur.com/M7LmDwb.jpg",
   #  average_rating: 0
     )
 

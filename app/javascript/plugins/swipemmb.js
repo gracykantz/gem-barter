@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var currentPicIndex = 0;
     var gestureDisabled = false;
     var fid = 0;
+    var chatid = 0;
 
     obj = document.getElementById('stacked-cards-block');
     stackedCardsObj = obj.querySelector('.stackedcards-container');
@@ -146,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       console.log(currentElementObj);
       console.log(currentElementObj.dataset.furnitureitemid);
       fid = currentElementObj.dataset.furnitureitemid;
+      console.log(currentElementObj.dataset.chatid);
       // const furniturecard = document.querySelector(".card");
       // console.log('print this dataset');
       // console.log(furniturecard.dataset);
@@ -286,12 +288,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
           method: "post",
           data: {fid, direct}
           })
-      if (currentPosition == 2) { // it's a match
-        backToMiddle();
-        showMatchOverlay();
-        gestureDisabled = true;
-        return;
-      };
+      // if (currentPosition == 2) { // it's a match
+      //   backToMiddle();
+      //   showMatchOverlay();
+      //   gestureDisabled = true;
+      //   return;
+      // };
       removeNoTransition();
       transformUi(1000, 0, 0, currentElementObj);
       if(useOverlays){

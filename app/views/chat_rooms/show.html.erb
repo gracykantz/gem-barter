@@ -2,8 +2,10 @@
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
       <div class="chat-header"><h4><%= @chat_room.name %></h4>
+        <% if @trade == "m" %>
         <%= link_to traded_path, data: {confirm: "Are you sure you want to mark your furniture as traded?"} do %>
         <button class="btn btn-success tradebutton--spacing"><p>Mark item as traded</p></button>
+        <% end %>
         <% end %>
       </div>
       <div class="messages">
@@ -21,13 +23,13 @@
 </div>
 <% content_for :after_js do %>
   <script>
-    scrollLastMessageIntoView();
+    // scrollLastMessageIntoView();
     App['chat_room_<%= @chat_room.id %>'] = App.cable.subscriptions.create({ channel: 'ChatRoomsChannel', chat_room_id: <%= @chat_room.id %> }, {
       received: (data) => {
         console.log(data)
 
           const messagesContainer = document.querySelector('.messages');
-          messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
+          // messagesContainer.insertAdjacentHTML('beforeend', data.message_partial);
           scrollLastMessageIntoView();
 
       }
@@ -39,7 +41,7 @@
 
     if (lastMessage !== undefined) {
       console.log("inside");
-      lastMessage.scrollIntoView({smooth: true});
+      lastMessage.scrollIntoView();
     }
   }
   </script>
