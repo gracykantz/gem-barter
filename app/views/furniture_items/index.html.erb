@@ -3,17 +3,30 @@
   <% if !@furniture_items.first.nil? %>
     <div class="stage">
       <div id="stacked-cards-block" class="stackedcards stackedcards--animatable init">
-        <div class="stackedcards-container">
-          <% @furniture_items.each_with_index do |furniture_item, item| %>
-            <% image = @images.where('furniture_item_id = ?', furniture_item.id) %>
-            <% unless image.nil? %>
-              <% if @currentchat.present? %>
-                <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @currentchat.id %>">
-              <% else %>
-                  <div class="card" data-furnitureitemid="<%= furniture_item.id %>">
-              <% end %>
-                <div class="card-content">
-                  <div class="card-image">
+
+          <div class="stackedcards-container">
+              <% @furniture_items.each_with_index do |furniture_item, item| %>
+                <% image = @images.where('furniture_item_id = ?', furniture_item.id) %>
+                <% unless image.nil? %>
+                <% if @currentchat.present? %>
+                  <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @currentchat.id %>">
+                <% else %>
+                  <% @chat = ChatRoom.find_by(match_id: furniture_item.matched_to_id) %>
+                    <% if @chat.present? %>
+                      <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @chat.id %>">
+                    <% elsif @previousfurniture.present? %>
+                      <% @chat = ChatRoom.find_by(match_id: @previousfurniture.matched_to_id) %>
+                      <% if @chat.present? %>
+                        <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @chat.id %>">
+                      <% else %>
+                        <div class="card" data-furnitureitemid="<%= furniture_item.id %>">
+                      <% end %>
+                    <% else %>
+                      <div class="card" data-furnitureitemid="<%= furniture_item.id %>">
+                    <% end %>
+                <% end %>
+                    <div class="card-content">
+                      <div class="card-image">
 
                       <% ppp[item] = [] %>
                       <% image.each do |i| %>
@@ -22,6 +35,7 @@
 
                     <%= cl_image_tag image[0].photo, class: "card--image" %>
                   </div>
+
                 </div>
                 <div class="card-footer">
                   <div class="card-body">
@@ -36,6 +50,12 @@
             <% end %>
           <% end %>
         </div>
+
+                <% end %>
+                <% @previousfurniture = furniture_item %>
+              <% end %>
+          </div>
+0
 
         <!--div class="stackedcards--animatable stackedcards-overlay" style="opacity: 0.5;" id="picdots"></div-->
         <div class="stackedcards--animatable stackedcards-overlay top"><img src="https://image.ibb.co/m1ykYS/rank_army_star_2_3x.png"  width="auto" height="auto"></div>
