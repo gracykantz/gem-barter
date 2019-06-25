@@ -49,6 +49,8 @@ Rails.application.configure do
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+  config.action_cable.url = "wss://www.gem-bartering-made-easy.herokuapp.com/cable"
+  config.action_cable.allowed_request_origins = [/http:\/\/*/, /https:\/\/*/]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -68,8 +70,6 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "gem-barter_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
-  config.action_cable.url = "wss://www.gem-bartering-made-easy.herokuapp.com/cable"
-  config.action_cable.allowed_request_origins = [ "https://www.gem-bartering-made-easy.herokuapp.com", "https://gem-bartering-made-easy.herokuapp.com" ]
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
