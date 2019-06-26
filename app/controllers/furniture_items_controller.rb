@@ -33,6 +33,8 @@ class FurnitureItemsController < ApplicationController
       puts @currentchat.name
     end
 
+    # binding.pry
+
     if @swipes.count > 0
       # Call this method to remove the swiped records from the logged in user index list
       @furniture_items = update_furniture_items(@swipes)
@@ -56,10 +58,7 @@ class FurnitureItemsController < ApplicationController
 
     # @user_furniture = FurnitureItem.where('user_id = ?', current_user.id)
     @user_furniture = FurnitureItem.find_by_user_id(current_user.id)
-    if @user_furniture.nil?
-      return
-    end
-
+    return if @user_furniture.nil?
   end
 
   # Call this method to remove the swiped records from the logged in user index list
@@ -208,7 +207,7 @@ class FurnitureItemsController < ApplicationController
           # @swipe.match_id = @matchrec.id
           @swipe.update(match_id: @matchrec.id)
           # create chat Room
-          chat_room = ChatRoom.create!(name: "#{@ownfurniture.user.first_name} - #{@furniture.user.first_name}", status: 'Open', match_id: @matchrec.id)
+          @chat_room = ChatRoom.create!(name: "#{@ownfurniture.user.first_name} - #{@furniture.user.first_name}", status: 'Open', match_id: @matchrec.id)
           # update furniture match id
           @ownfurniture.update(matched_to_id: @matchrec.id)
           @furniture.update(matched_to_id: @matchrec.id)
@@ -241,10 +240,15 @@ class FurnitureItemsController < ApplicationController
       end
     end
 
-    if chat_room.present?
-      puts chat_room.name
+    if @chat_room.present?
+      puts @chat_room.name
     end
 
+    respond_to do |format|
+      format.html {}
+      format.js { render json: @chat_room }
+    end
+    # respond to html and js.. (render json: chatroom)
     redirect_to category_furniture_items_path(@furniture.category_id)
   end
 

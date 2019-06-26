@@ -250,6 +250,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           method: "post",
           data: {fid, direct},
           success: function(result){
+            debugger
             if (result) {
               console.log(result);
             }
@@ -293,6 +294,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           method: "post",
           data: {fid, direct},
           success: function(result){
+          debugger
             if (result) {
               console.log(result);
             }
