@@ -52,6 +52,7 @@ gracy = User.create!(
     avatar_url: "https://i.imgur.com/KXSQEfC.jpg",
     bio: "Lover of planet and people, cat owner, and always looking to renew and refresh the style of my home.",
     remote_photo_url: "https://i.imgur.com/KXSQEfC.jpg",
+    location: "Rosengarden, Helsingborg"
   #  average_rating: 0
     )
 
@@ -71,6 +72,7 @@ mika = User.create!(
     avatar_url: "https://education.fsu.edu/wp-content/uploads/2016/09/staff-avatar-man.png",
     bio: "Love refreshing my place, and meeting new people",
     remote_photo_url: "https://education.fsu.edu/wp-content/uploads/2016/09/staff-avatar-man.png",
+    location: "Sockengatan, Helsingborg"
   #  average_rating: 0
     )
 
@@ -91,6 +93,7 @@ edwin = User.create!(
     avatar_url: "https://i.imgur.com/ZKcBGtA.jpg",
     bio: "Into antique furniture with a long history.",
     remote_photo_url: "https://i.imgur.com/ZKcBGtA.jpg",
+    location: "Kullagatan, Helsingborg"
   #  average_rating: 0
     )
 
@@ -112,6 +115,7 @@ rose = User.create!(
     avatar_url: "https://i.imgur.com/Sliu9Co.jpg",
     bio: "I have a beautiful daughter, and another one on the way. Looking for great finds for my kids!",
     remote_photo_url: "https://i.imgur.com/Sliu9Co.jpg",
+    location: "Kullagatan, Helsingborg"
   #  average_rating: 0
     )
 
@@ -131,6 +135,7 @@ furniture_item = rose.furniture_items.create!(
     avatar_url: "https://i.imgur.com/gheZcFH.jpg",
     bio: "Reliable and looking to trade!",
     remote_photo_url: "https://i.imgur.com/gheZcFH.jpg",
+    location: "Kullagatan, Helsingborg"
   #  average_rating: 0
     )
 
@@ -150,6 +155,7 @@ josh = User.create!(
     avatar_url: "https://education.fsu.edu/wp-content/uploads/2016/09/staff-avatar-man.png",
     bio: "Happy father of two",
     remote_photo_url: "https://education.fsu.edu/wp-content/uploads/2016/09/staff-avatar-man.png",
+    location: "Lund"
   #  average_rating: 0
     )
 
@@ -169,6 +175,7 @@ ludvig = User.create!(
     avatar_url: "https://i.imgur.com/uUgORdr.jpg",
     bio: "I like Magic the Gathering, and disappointing my friends.",
     remote_photo_url: "https://i.imgur.com/uUgORdr.jpg",
+    location: "Helsingborg Central, Helsingborg"
   #  average_rating: 0
     )
 
@@ -188,6 +195,7 @@ alyssa = User.create!(
     avatar_url: "https://i.imgur.com/NBQC65H.jpg",
     bio: "",
     remote_photo_url: "https://i.imgur.com/NBQC65H.jpg",
+    location: "Hyllie Boulevard 19, Malmö"
   #  average_rating: 0
     )
 
@@ -207,6 +215,7 @@ lucy = User.create!(
     avatar_url: "https://i.imgur.com/M7LmDwb.jpg",
     bio: "Lover of cats and girls and I like to collect weird interesting pieces for my place, added bonus if it is anything mythology related",
     remote_photo_url: "https://i.imgur.com/M7LmDwb.jpg",
+    location: "Mariagatan 6, Helsingborg"
   #  average_rating: 0
     )
 
@@ -227,6 +236,7 @@ dom = User.create!(
     avatar_url: "https://i.imgur.com/Jd7TWTo.jpg",
     bio: "",
     remote_photo_url: "https://i.imgur.com/Jd7TWTo.jpg",
+    location: "Stortorget 18, Helsingborg"
   #  average_rating: 0
     )
 
@@ -246,6 +256,7 @@ magda = User.create!(
     avatar_url: "https://i.imgur.com/WHU7PWg.jpg",
     bio: "Happy mother of two amazing girls, working on living sustainably so they can have a better planet to live on.",
     remote_photo_url: "https://i.imgur.com/WHU7PWg.jpg",
+    location: "Järnvägsgatan 13, Helsingborg"
   #  average_rating: 0
     )
 
@@ -266,6 +277,7 @@ drazen = User.create!(
     avatar_url: "https://i.imgur.com/pe3OuGV.jpg",
     bio: "",
     remote_photo_url: "https://i.imgur.com/pe3OuGV.jpg",
+    location: "Sofierovägen 131, Helsingborg"
   #  average_rating: 0
     )
 
@@ -285,6 +297,7 @@ oscar = User.create!(
     avatar_url: "https://i.imgur.com/17hXBzb.jpg",
     bio: "I really like chicken wings",
     remote_photo_url: "https://i.imgur.com/17hXBzb.jpg",
+    location: "Laröd, Helsingborg"
   #  average_rating: 0
     )
 
@@ -304,6 +317,7 @@ jane = User.create!(
     avatar_url: "https://i.imgur.com/23fEv78.jpg",
     bio: "Redecorating my summer house and looking for antique items",
     remote_photo_url: "https://i.imgur.com/23fEv78.jpg",
+    location: "GUSTAV ADOLFS TORG 8, Helsingborg"
   #  average_rating: 0
     )
 
@@ -323,6 +337,7 @@ olga = User.create!(
     avatar_url: "https://i.imgur.com/mm0WqBN.jpg",
     bio: "Love to travel and explore new places, and collect things from interesting areas.",
     remote_photo_url: "https://i.imgur.com/mm0WqBN.jpg",
+    location: "Bollbrogatan 1, Helsingborg"
   #  average_rating: 0
     )
 
@@ -342,6 +357,7 @@ laura = User.create!(
     avatar_url: "https://i.imgur.com/pPar5l2.jpg",
     bio: "",
     remote_photo_url: "https://i.imgur.com/pPar5l2.jpg",
+    location: "Råå, Helsingborg"
   #  average_rating: 0
     )
 
@@ -361,6 +377,7 @@ carey = User.create!(
     avatar_url: "https://i.imgur.com/uwcCXUO.jpg",
     bio: "Cat mom and avid gamer, looking for cool things for my office.",
     remote_photo_url: "https://i.imgur.com/uwcCXUO.jpg",
+    location: "Helsingborg"
   #  average_rating: 0
     )
 
