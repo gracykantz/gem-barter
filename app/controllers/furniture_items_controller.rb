@@ -242,14 +242,17 @@ class FurnitureItemsController < ApplicationController
 
     if @chat_room.present?
       puts @chat_room.name
+      respond_to do |format|
+        format.json { render json: @chat_room.id } # don't do msg.to_json
+      end
     end
-
-    respond_to do |format|
-      format.html {}
-      format.js { render json: @chat_room }
-    end
+    # respond_to do |format|
+    #   format.html {}
+    #   format.js { render json: @chat_room }
+    # end
     # respond to html and js.. (render json: chatroom)
-    redirect_to category_furniture_items_path(@furniture.category_id)
+    # redirect_to category_furniture_items_path(@furniture.category_id)
+
   end
 
   def update_furniture_item_id(swipe, furn)

@@ -297,14 +297,20 @@ document.addEventListener("DOMContentLoaded", function(event) {
           // debugger
             if (result) {
               console.log(result);
+              chatid = result;
+              if (chatid > 0) {
+                console.log("yes this is the id");
+              }
             }
           }})
       // if (currentPosition == 2) { // it's a match
-      //   backToMiddle();
-      //   showMatchOverlay();
-      //   gestureDisabled = true;
-      //   return;
-      // };
+      // debugger
+      if (chatid > 0) {
+        backToMiddle();
+        showMatchOverlay();
+        gestureDisabled = true;
+        return;
+      };
       removeNoTransition();
       transformUi(1000, 0, 0, currentElementObj);
       if(useOverlays){
@@ -750,7 +756,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function startChat() {
       hideMatchOverlay();
-      alert("start chat");
+      alert("Chat with the Trader");
     };
 
 
