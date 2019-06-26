@@ -248,8 +248,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
         $.ajax({
           url: "/update_swipes",
           method: "post",
-          data: {fid, direct}
-          })
+          data: {fid, direct},
+          success: function(result){
+            if (result) {
+              console.log(result);
+            }
+          }})
       removeNoTransition();
       transformUi(-1000, 0, 0, currentElementObj);
       if(useOverlays){
@@ -287,8 +291,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
         $.ajax({
           url: "/update_swipes",
           method: "post",
-          data: {fid, direct}
-          })
+          data: {fid, direct},
+          success: function(result){
+            if (result) {
+              console.log(result);
+            }
+          }})
       // if (currentPosition == 2) { // it's a match
       //   backToMiddle();
       //   showMatchOverlay();
