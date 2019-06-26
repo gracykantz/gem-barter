@@ -1,20 +1,24 @@
 <div class="container">
   <div class="row">
   <% @chat_rooms.each do |chat_room| %>
-    <div class="col-sm-8 col-sm-offset-3">
+    <div class="col-sm-12 col-sm-offset-3">
         <div class="chathistory-header">
           <% @match = Match.find(chat_room.match_id) %>
           <% @swipe = Swipe.find_by(match_id: @match.id) %>
           <% @furniture = FurnitureItem.find_by(id: @swipe.owned_furniture_item_id) %>
           <p><b>Traded between: </b><%= chat_room.name %></p>
           <% if @furniture.id == FurnitureItem.find_by(user_id: current_user.id).id %>
-            <%= cl_image_tag @furniture.images.first.photo, class: "cardhistory--image" %><br>
-            <b>Furniture:</b><p><%= @furniture.title %></p>
+            <%= cl_image_tag @furniture.images.first.photo, class: "cardhistory--image rounded" %>
+            <!-- <b>Furniture:</b><p><%= @furniture.title %></p> -->
+            <%= cl_image_tag @swipe.wanted_furniture_item.images.first.photo, class: "cardhistory--image rounded" %>
+              <!-- <b>Furniture:</b><p><%= @swipe.wanted_furniture_item.title %></p> -->
           <% else %>
             <% @furniture = FurnitureItem.find_by(id: @swipe.wanted_furniture_item_id) %>
             <% if @furniture.id == FurnitureItem.find_by(user_id: current_user.id).id %>
-              <%= cl_image_tag @furniture.images.first.photo, class: "cardhistory--image" %><br>
-              <b>Furniture:</b><p><%= @furniture.title %></p>
+              <%= cl_image_tag @furniture.images.first.photo, class: "cardhistory--image rounded" %>
+              <!-- <b>Furniture:</b><p><%= @furniture.title %></p> -->
+              <%= cl_image_tag @swipe.owned_furniture_item.images.first.photo, class: "cardhistory--image rounded" %>
+              <!-- <b>Furniture:</b><p><%= @swipe.owned_furniture_item.title %></p> -->
             <% end %>
           <% end %>
         </div>

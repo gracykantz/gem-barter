@@ -7,23 +7,23 @@
               <% @furniture_items.each_with_index do |furniture_item, item| %>
                 <% image = @images.where('furniture_item_id = ?', furniture_item.id) %>
                 <% unless image.nil? %>
-                <% if @currentchat.present? %>
-                  <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @currentchat.id %>">
-                <% else %>
-                  <% @chat = ChatRoom.find_by(match_id: furniture_item.matched_to_id) %>
-                    <% if @chat.present? %>
-                      <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @chat.id %>">
-                    <% elsif @previousfurniture.present? %>
-                      <% @chat = ChatRoom.find_by(match_id: @previousfurniture.matched_to_id) %>
-                      <% if @chat.present? %>
-                        <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @chat.id %>">
+                  <% if @currentchat.present? %>
+                      <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @currentchat.id %>">
+                  <% else %>
+                      <% @chat = ChatRoom.find_by(match_id: furniture_item.matched_to_id) %>
+                      <% if !@chat.nil? %>
+                          <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @chat.id %>">
+                      <% elsif @previousfurniture.present? %>
+                          <% @chat = ChatRoom.find_by(match_id: @previousfurniture.matched_to_id) %>
+                          <% if @chat.present? %>
+                              <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @chat.id %>">
+                          <% else %>
+                              <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @currentchat %>">
+                          <% end %>
                       <% else %>
-                        <div class="card" data-furnitureitemid="<%= furniture_item.id %>">
+                          <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @currentchat %>">
                       <% end %>
-                    <% else %>
-                      <div class="card" data-furnitureitemid="<%= furniture_item.id %>">
-                    <% end %>
-                <% end %>
+                  <% end %>
                     <div class="card-content">
                       <div class="card-image">
 
