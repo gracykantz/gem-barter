@@ -1,58 +1,60 @@
+<div class="container">
 <div class="profile-greeting">
   <h1 class="profile-title">Hej <%= current_user.first_name %></h1>
   <span class="profile-title profile-title-ornament" style="background-image: url(<%= image_path('name_ornament.svg') %>)"></span>
 </div>
 <div class="main-profile-content">
   <%= cl_image_tag current_user.photo, width: 1700, height: 1700,:crop=>"crop", :gravity=>"face", class: "avatar-large avatar-large-customized" %>
-
-    <%= link_to edit_user_registration_path do %>
-    <button class="btn btn-success button--spacing top--button">Edit my profile</button>
+  <div class="profile-rating">
+    <% @review.times do %>
+      <i class="fas fa-paperclip"></i>
     <% end %>
-    <!-- <br> -->
+  </div>
+  <%= link_to edit_user_registration_path do %>
+  <button class="btn btn-success button--spacing top--button">Edit my profile</button>
+  <% end %>
+  <!-- <br> -->
 
+  <% furniture_item = FurnitureItem.find_by(user_id: current_user.id) %>
+  <% if !furniture_item.nil? %>
 
-    <% furniture_item = FurnitureItem.find_by(user_id: current_user.id) %>
-    <% if !furniture_item.nil? %>
-
-      <% if @trade == "m" %>
-        <%= link_to traded_path, data: {confirm: "Are you sure you want to mark your furniture as traded?"} do %>
+    <% if @trade == "m" %>
+      <%= link_to traded_path, data: {confirm: "Are you sure you want to mark your furniture as traded?"} do %>
         <button class="btn btn-success button--spacing">Mark item as traded</button>
-        <% end %>
-        <% end %>
+      <% end %>
+      <% end %>
 
-        <% if @trade == "e" %>
-        <%= link_to edit_furniture_item_path(furniture_item) do %>
+      <% if @trade == "e" %>
+      <%= link_to edit_furniture_item_path(furniture_item) do %>
         <button class="btn btn-success button--spacing editfurniture--button">Edit your item</button>
-        <% end %>
-        <br>
-
-        <%= link_to "Delete your item", category_furniture_item_path(furniture_item.category_id, furniture_item), class: "btn btn-danger button--spacing traded--button",
-        method: :delete,
-        data: {confirm: "Are you sure you want to remove the furniture for trade?"} %>
       <% end %>
 
-      <% if @trade == "t" %>
-        <%= link_to new_furniture_item_path do %>
-        <button class="btn btn-success button--spacing editfurniture--button">Add Furniture to begin trade</button>
-        <% end %><br,><br>
-
-        <%= link_to show_history_path do %>
-        <button class = "btn btn-success button--spacing editfurniture--button">View Trading History</button>
-        <% end %>
-      <% end %>
-      <br>
-
-      <%= link_to destroy_user_session_path, method: :delete do %>
-      <i class="logout-button fas fa-sign-out-alt"></i>
-      <% end %>
-
-    <%else %>
-
-        <% @category = Category.find_by_name("View All") %>
-        <%= link_to new_furniture_item_path do %>
-        <button class="btn btn-success button--spacing editfurniture--button">Add Furniture to begin trade</button>
-        <% end %>
-
-      <br>
+      <%= link_to "Delete your item", category_furniture_item_path(furniture_item.category_id, furniture_item), class: "btn btn-danger button--spacing",
+      method: :delete,
+      data: {confirm: "Are you sure you want to remove the furniture for trade?"} %>
     <% end %>
+
+    <% if @trade == "t" %>
+      <%= link_to new_furniture_item_path do %>
+        <button class="btn btn-warning button--spacing editfurniture--button">Add Furniture to begin trade</button>
+      <% end %><br><br>
+
+      <%= link_to show_history_path do %>
+        <button class = "btn btn-success button--spacing editfurniture--button">View Trading History</button>
+      <% end %>
+    <% end %>
+
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <i class="logout-button fas fa-sign-out-alt"></i>
+    <% end %>
+
+  <%else %>
+<br>
+    <% @category = Category.find_by_name("View All") %>
+    <%= link_to new_furniture_item_path do %>
+      <button class="btn btn-danger button--spacing editfurniture--button">Add Furniture to begin trade</button>
+    <% end %>
+    <br>
+  <% end %>
+</div>
 </div>
