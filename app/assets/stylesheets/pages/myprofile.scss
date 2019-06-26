@@ -36,3 +36,11 @@ body {
 }
 
 @keyframes fadeIn { from { opacity:0; } to { opacity:0.5; } }
+
+.profile-rating {
+  text-align: center;
+  font-size: 1.7rem;
+  padding-top: 30px;
+  color: $danger;
+
+}
