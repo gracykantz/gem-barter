@@ -16,13 +16,6 @@ class SwipesController < ApplicationController
     @swipe = Swipe.new(swipe_params)
     # Call method to udpate Owned/ wanted furniture item id on created Swipe record
     @swipe = update_furniture_item_id(@swipe)
-    # @furnitureitem = FurnitureItem.find(params[:furniture_item_id])
-    # @usrfurnitureitm = FurnitureItem.find_by_user_id(current_user.id)
-    # if @furnitureitem.user_id == current_user.id
-    #   @swipe.owned_furniture_item_id = @furnitureitem.id
-    # else
-    #   @swipe.wanted_furniture_item_id = @furnitureitem.id
-    #   @swipe.owned_furniture_item_id = @usrfurnitureitm.id
     unless @swipe.wanted_furniture_item_id.nil?
       if @swipe.save
         # Find all existing Swipe records
@@ -32,17 +25,11 @@ class SwipesController < ApplicationController
           @swipe.match_id = @matchrec.id
           @swipe.save!
         end
-        # @existswipes = Swipe.where(' (owned_furniture_item_id = ? AND wanted_furniture_item_id = ?)
-        #   AND liked = ?', @swipe.wanted_furniture_item_id, @swipe.owned_furniture_item_id, true)
-        # unless @existswipes.nil?
-        #   @match = Match.new
-        #   Match.create!(traded: true)
-        # end
+
         @category_id = params[:category_id]
         redirect_to category_furniture_items_path(@category_id) # update the rendering path
       end
     end
-    # end
   end
 
   def update_furniture_item_id(swipe)

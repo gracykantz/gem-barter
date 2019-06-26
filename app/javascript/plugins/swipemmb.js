@@ -147,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       console.log(currentElementObj);
       console.log(currentElementObj.dataset.furnitureitemid);
       fid = currentElementObj.dataset.furnitureitemid;
+      console.log("Chat ID data");
       console.log(currentElementObj.dataset.chatid);
       // const furniturecard = document.querySelector(".card");
       // console.log('print this dataset');
@@ -247,8 +248,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
         $.ajax({
           url: "/update_swipes",
           method: "post",
-          data: {fid, direct}
-          })
+          data: {fid, direct},
+          success: function(result){
+            if (result) {
+              console.log(result);
+            }
+          }})
       removeNoTransition();
       transformUi(-1000, 0, 0, currentElementObj);
       if(useOverlays){
@@ -286,8 +291,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
         $.ajax({
           url: "/update_swipes",
           method: "post",
-          data: {fid, direct}
-          })
+          data: {fid, direct},
+          success: function(result){
+            if (result) {
+              console.log(result);
+            }
+          }})
       // if (currentPosition == 2) { // it's a match
       //   backToMiddle();
       //   showMatchOverlay();
