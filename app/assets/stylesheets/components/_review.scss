@@ -1,0 +1,39 @@
+.review-content {
+  margin: 15px 0px 0px 0px;
+  color: $primary;
+  border-bottom: 1px solid $success;
+}
+
+.review-text {
+  padding: 10px;
+}
+
+.br-theme-css-stars .br-widget a.br-selected:after {
+  color: $danger !important;
+ }
+
+.br-theme-css-stars .br-widget {
+  display: flex;
+  justify-content: center;
+}
+
+.review-form {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+.form-control {
+  border: 1px solid $success;
+}
+
+.form-control-label {
+  color: $primary;
+}
+
+.review-title {
+  margin: 8px 15px;
+}
+
+.add-review-button {
+  margin: 8px 15px;
+}
