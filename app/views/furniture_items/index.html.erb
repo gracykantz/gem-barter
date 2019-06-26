@@ -5,7 +5,8 @@
       <div id="stacked-cards-block" class="stackedcards stackedcards--animatable init">
           <div class="stackedcards-container">
               <% @furniture_items.each_with_index do |furniture_item, item| %>
-                <% image = @images.where('furniture_item_id = ?', furniture_item.id) %>
+                <!-- <% image = @images.where('furniture_item_id = ?', furniture_item.id) %> -->
+                <% image = furniture_item.images %>
                 <% unless image.nil? %>
                 <% if @currentchat.present? %>
                   <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @currentchat.id %>">

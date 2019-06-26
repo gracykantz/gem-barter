@@ -29,6 +29,7 @@ class FurnitureItemsController < ApplicationController
     end
 
     if @currentchat.present?
+      puts "current chat"
       puts @currentchat.name
     end
 

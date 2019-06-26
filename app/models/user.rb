@@ -12,4 +12,6 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :email, presence: true
   validates :password, presence: true
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 end

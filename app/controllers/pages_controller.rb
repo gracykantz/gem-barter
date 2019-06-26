@@ -5,6 +5,18 @@ class PagesController < ApplicationController
 
   def myprofile
     @reviews = Review.where("user_reviewed_id = ?", current_user.id)
+    # Logic for defining the distance - Added by Shalini
+    @furniturematch = current_user.furniture_items.first.matched_to_id
+    @swipe = Swipe.find_by(match_id: @furniturematch)
+    if @swipe.owned_furniture_item.user.id == current_user.id
+      @distance = Geocoder::Calculations.distance_between([current_user.latitude, current_user.longitude], [@swipe.wanted_furniture_item.user.latitude, @swipe.wanted_furniture_item.user.longitude])
+      @distance = @distance.round(2)
+    elsif @swipe.wanted_furniture_item.user.id == current_user.id
+      @distance = Geocoder::Calculations.distance_between([current_user.latitude, current_user.longitude], [@swipe.owned_furniture_item.user.latitude, @swipe.owned_furniture_item.user.longitude])
+      @distance = @distance.round(2)
+    end
+    # raise
+    # ENd of Addition
     @review = 0
     stars = 0
     if @reviews.count.positive?
