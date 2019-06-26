@@ -13,10 +13,12 @@
 .message {
   display: flex;
   margin-bottom: 10px;
+  font-size: 20px;
   &.right {
     flex-direction: row-reverse;
     .message-content {
       background-color: #cdd6dd; //cd8987, //#F2F9FC;
+
     }
   }
 }
@@ -26,17 +28,22 @@
   margin: 0 10px;
   padding: 11px 10px 8px 10px;
 }
-.avatar {
-  width: 42px;
-  height: 42px;
+.avatar-messages {
+  width: 55px;
+  height: 56px;
   border-radius: 50%;
 }
 
 #create-message {
   padding: 10px;
   background-color: #ffffff;
-  margin-bottom: 20px;
+
   border: 1px solid #ececec;
+  position: fixed;
+  right: 0;
+  bottom: 100px;
+  left: 0;
+  z-index: 1030;
 }
 .message_content {
   margin-bottom: 0;
