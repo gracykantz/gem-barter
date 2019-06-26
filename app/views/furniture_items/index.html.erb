@@ -3,59 +3,57 @@
   <% if !@furniture_items.first.nil? %>
     <div class="stage">
       <div id="stacked-cards-block" class="stackedcards stackedcards--animatable init">
-
           <div class="stackedcards-container">
               <% @furniture_items.each_with_index do |furniture_item, item| %>
                 <% image = @images.where('furniture_item_id = ?', furniture_item.id) %>
                 <% unless image.nil? %>
-                  <% if @currentchat.present? %>
-                      <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @currentchat.id %>">
-                  <% else %>
-                      <% @chat = ChatRoom.find_by(match_id: furniture_item.matched_to_id) %>
-                      <% if !@chat.nil? %>
-                          <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @chat.id %>">
-                      <% elsif @previousfurniture.present? %>
-                          <% @chat = ChatRoom.find_by(match_id: @previousfurniture.matched_to_id) %>
-                          <% if @chat.present? %>
-                              <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @chat.id %>">
-                          <% else %>
-                              <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @currentchat %>">
-                          <% end %>
-                      <% else %>
-                          <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @currentchat %>">
-                      <% end %>
-                  <% end %>
+                <% if @currentchat.present? %>
+                  <div class="card" data-furnitureitemid="<%= furniture_item.id %>" data-chatid="<%= @currentchat.id %>">
+                    <% else %>
+                    <div class="card" data-furnitureitemid="<%= furniture_item.id %>">
+                    <% end %>
                     <div class="card-content">
                       <div class="card-image">
 
-                      <% ppp[item] = [] %>
-                      <% image.each do |i| %>
-                        <% ppp[item] << i.photo %>
-                      <% end %>
+                          <% ppp[item] = [] %>
+                          <% image.each do |i| %>
+                            <% ppp[item] << i.photo %>
+                          <% end %>
 
-                    <%= cl_image_tag image[0].photo, class: "card--image" %>
-                  </div>
+                        <%= cl_image_tag image[0].photo, class: "card--image" %>
+                      </div>
+                    </div>
+                    <div class="card-footer">
+                      <div class="card-body">
+                      <h3 class="card--title"><%= furniture_item.title %></h3>
+                    <p class= "card--description"><%= furniture_item.description %></p></div>
 
-                </div>
-                <div class="card-footer">
-                  <div class="card-body">
-                    <h3 class="card--title"><%= furniture_item.title %></h3>
-                    <p class= "card--description"><%= furniture_item.description %></p>
+                        <%= cl_image_tag furniture_item.user.photo, width: 1700, height: 1700, crop: "crop", gravity: "face", class: "avatar card--avatar", data:{ toggle: "modal" }   %>
+                      <!-- Modal -->
+                      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              ...
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <%= cl_image_tag furniture_item.user.photo, width: 1700, height: 1700, crop: "crop", gravity: "face", id:"sweet-alert-demo#{furniture_item.id}", class: "avatar card--avatar", :onClick => "notTest(this.id);"  %>
-                  </div>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
-
                 <% end %>
-                <% @previousfurniture = furniture_item %>
               <% end %>
           </div>
-0
 
         <!--div class="stackedcards--animatable stackedcards-overlay" style="opacity: 0.5;" id="picdots"></div-->
         <div class="stackedcards--animatable stackedcards-overlay top"><img src="https://image.ibb.co/m1ykYS/rank_army_star_2_3x.png"  width="auto" height="auto"></div>
@@ -67,12 +65,12 @@
           <div><button id="chatBTN" class="btn btn-primary">Continue</button></div>
         </div>
       </div>
-        <div class="global-actions">
-          <!--div class="left-action"><img src="https://image.ibb.co/heTxf7/20_status_close_3x.png" width="26" height="26"/></div>
-          <div class="top-action"><img src="https://image.ibb.co/m1ykYS/rank_army_star_2_3x.png" width="18" height="16"/></div>
-          <div class="right-action"><img src="https://image.ibb.co/dCuESn/Path_3x.png" width="30" height="28"/></div-->
-        </div>
+      <div class="global-actions">
+        <!--div class="left-action"><img src="https://image.ibb.co/heTxf7/20_status_close_3x.png" width="26" height="26"/></div>
+        <div class="top-action"><img src="https://image.ibb.co/m1ykYS/rank_army_star_2_3x.png" width="18" height="16"/></div>
+        <div class="right-action"><img src="https://image.ibb.co/dCuESn/Path_3x.png" width="30" height="28"/></div-->
       </div>
+    </div>
 
   <% else %><br><br><br>
     <center><b>&nbsp&nbsp<p class="card--content">No items at the moment, you will have it soon to trade</p></b></center>
@@ -84,5 +82,8 @@
       <button class="btn btn-success button--spacing editfurniture--button">Add Furniture to begin trade</button>
     <% end %>
 <% end %>
+
+
+
 
 <script> var ttt = <%= ppp.to_json.html_safe %>;</script>
