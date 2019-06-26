@@ -252,6 +252,7 @@ class FurnitureItemsController < ApplicationController
     # end
     # respond to html and js.. (render json: chatroom)
     # redirect_to category_furniture_items_path(@furniture.category_id)
+
   end
 
   def update_furniture_item_id(swipe, furn)

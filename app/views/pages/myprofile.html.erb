@@ -20,9 +20,13 @@
 
     <% if @trade == "m" %>
       <%= link_to traded_path, data: {confirm: "Are you sure you want to mark your furniture as traded?"} do %>
-        <button class="btn btn-success button--spacing">Mark item as traded</button>
+
+
+        <button class="btn btn-warning button--spacing">Mark item as traded</button>
+
       <% end %><br>
       <center><p class="card--description"> <i class="fas fa-map-marker-alt">&nbspTrading Distance:<%= @distance %>&nbsp Kms</i></p></center>
+
       <% end %>
 
       <% if @trade == "e" %>

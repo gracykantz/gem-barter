@@ -1,0 +1,11 @@
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-sm-offset-3 text-center">
+      <%= simple_form_for([@chatroom, @review]) do |f| %>
+        <%= f.input :review, collection: (1..5).to_a, label: "Rate this user" %>
+        <%= f.submit "Send your review", class: "btn btn-primary button--space" %>
+      <% end %>
+    </div>
+  </div>
+</div>

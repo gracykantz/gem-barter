@@ -15,6 +15,8 @@ end
   get 'messages/index'
   resources :chat_rooms, only: [:show] do
     resource :messages, only: [:show, :new, :create]
+    resources :reviews, only: [:new, :create]
+
   end
 
   get 'noshow', to: 'chat_rooms#no_show', as: :noshow
