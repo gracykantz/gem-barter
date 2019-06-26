@@ -8,7 +8,9 @@
   text-align: center;
   color: $danger;
   font-family: $headers-font;
-  margin-bottom: 15px;
+  margin-bottom: 50px;
+  margin-top: 50px;
+  z-index: 100;
 }
 
 .file {
@@ -16,9 +18,9 @@
 }
 
 .form-control {
-  border: 1px solid $success;
+  border: 1px solid $success !important;
+  margin-bottom: 35px !important;
 }
-
 
 .furniture-new-title-new {
     text-align: center;
@@ -30,4 +32,18 @@
     padding: 10px;
     opacity: 0.9;
     font-size: 2.0rem;
+    position: relative;
 }
+
+.furniture-new-title-vector {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 379px;
+  height: 153px;
+  animation:fadeIn ease-in 1;
+  animation-fill-mode:forwards;
+  animation-duration:2s;
+  position: absolute;
+  top: 7px;
+  z-index: -1
+  }
