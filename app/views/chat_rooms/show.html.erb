@@ -1,12 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <div class="chat-header"><h4><%= @chat_room.name %>
+      <div class="chat-header">
+        <h4><%= @chat_room.name %>
         <% if @trade == "m" %>
-        <%= link_to traded_path, data: {confirm: "Are you sure you want to mark your furniture as traded?"} do %>
-        <button class="btn btn-danger tradebutton--spacing">Mark item as traded</button>
-        <% end %></h4>
-        <% end %>
+        # traded_path
+          <%= link_to new_chat_room_review_path(@chat_room), data: {confirm: "Are you sure you want to mark your furniture as traded?"} do %>
+              <button class="btn btn-danger tradebutton--spacing">Mark item as traded</button>
+            <% end %>
+          <% end %>
+        </h4>
       </div>
       <div class="messages">
         <% @chat_room.messages.each do |message| %>
