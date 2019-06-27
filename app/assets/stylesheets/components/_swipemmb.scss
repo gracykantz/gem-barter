@@ -16,6 +16,7 @@
     -webkit-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
+    overflow: hidden !important;
 }
 
 .stage.hidden {
@@ -178,9 +179,6 @@
 /*------ CSS Use Case Example END ------*/
 
 /*----- Stacked Cards component css START -----*/
-body {
-    overflow: hidden !important;
-}
 
 .no-transition {
   -webkit-transition: none ! important;
