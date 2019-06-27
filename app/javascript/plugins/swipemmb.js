@@ -1,3 +1,4 @@
+// import swal from 'sweetalert';
 // JavaScript Document
 document.addEventListener("DOMContentLoaded", function(event) {
 
@@ -25,6 +26,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     var gestureDisabled = false;
     var fid = 0;
     var chatid = 0;
+    var chatname = "";
+    var chatpic = "";
+    var chatoname = "";
+    var chatftitle = "";
+    var chatotitle = "";
+    var wfid = 0;
 
     obj = document.getElementById('stacked-cards-block');
     stackedCardsObj = obj.querySelector('.stackedcards-container');
@@ -145,10 +152,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
       currentElementObj = listElNodesObj[currentPosition];
       console.log("CurrentElement function");
       console.log(currentElementObj);
-      console.log(currentElementObj.dataset.furnitureitemid);
-      fid = currentElementObj.dataset.furnitureitemid;
-      console.log("Chat ID data");
-      console.log(currentElementObj.dataset.chatid);
+      if (currentElementObj) {
+        console.log(currentElementObj.dataset.furnitureitemid);
+        fid = currentElementObj.dataset.furnitureitemid;
+        console.log("Chat ID data");
+        console.log(currentElementObj.dataset.chatid);
+      }
       // const furniturecard = document.querySelector(".card");
       // console.log('print this dataset');
       // console.log(furniturecard.dataset);
@@ -253,8 +262,22 @@ document.addEventListener("DOMContentLoaded", function(event) {
             // debugger
             if (result) {
               console.log(result);
+              chatid = result.chatid;
+              chatname = result.wname;
+              chatoname = result.oname;
+              chatpic = result.image;
+              chatotitle = result.own_title;
+              chatftitle = result.wanted_title;
             }
           }})
+        // Start of Addition - Show match
+        if (chatid > 0) {
+        backToMiddle();
+        showMatchOverlay();
+        gestureDisabled = true;
+        return;
+      };
+      // End of Addition
       removeNoTransition();
       transformUi(-1000, 0, 0, currentElementObj);
       if(useOverlays){
@@ -297,7 +320,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
           // debugger
             if (result) {
               console.log(result);
-              chatid = result;
+              chatid = result.chatid;
+              chatname = result.wname;
+              chatoname = result.oname;
+              chatpic = result.image;
+              chatotitle = result.own_title;
+              chatftitle = result.wanted_title;
+              wfid = result.wanted_id;
+              debugger
               if (chatid > 0) {
                 console.log("yes this is the id");
               }
@@ -709,6 +739,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         var f = currentElementObj.querySelector("img");
         f.src = ttt[currentPosition][currentPicIndex]['url'];
+        console.log(f.src);
 
       };
     };
@@ -756,7 +787,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     function startChat() {
       hideMatchOverlay();
-      alert("Chat with the Trader");
+      var buttonChat = document.querySelector('#chatBTN');
+      var chatid = buttonChat.getAttribute("data-chatid");
+      var wfid = buttonChat.getAttribute("data-wfid");
+      chatid.setAttribute("data-chatid", chatid);
+      wfid.setAttribute("data-wfid", wfid);
+      buttonChat.setinnerHTML("Chat with" +chatname);
+      // alert("Hey " + chatoname + " chat with " + chatname + " for trading your stuff, you two liked each other stuff!! ");
     };
 
 

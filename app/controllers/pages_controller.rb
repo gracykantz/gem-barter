@@ -28,6 +28,18 @@ class PagesController < ApplicationController
       @review = (stars / @reviews.count).round
     end
 
+    # @hflag = ""
+    @furnitures = current_user.furniture_items.all
+    @furnitures.each do |furn|
+      if furn.matched_to_id.present?
+        @mtraded = Match.find_by(id: furn.matched_to_id)
+        if @mtraded.traded == true
+          @hflag = 'X'
+        end
+      end
+    end
+    # raise
+
     # current_user.id
     furniture_item = FurnitureItem.find_by_user_id(current_user.id)
     if furniture_item.nil?
