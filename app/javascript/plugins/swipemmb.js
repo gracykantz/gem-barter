@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           method: "post",
           data: {fid, direct},
           success: function(result){
-            // debugger
+
             if (result) {
               console.log(result);
               chatid = result.chatid;
@@ -317,7 +317,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
           method: "post",
           data: {fid, direct},
           success: function(result){
-          // debugger
+
             if (result) {
               console.log(result);
               chatid = result.chatid;
@@ -327,14 +327,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
               chatotitle = result.own_title;
               chatftitle = result.wanted_title;
               wfid = result.wanted_id;
-              debugger
+
               if (chatid > 0) {
                 console.log("yes this is the id");
               }
             }
           }})
       // if (currentPosition == 2) { // it's a match
-      // debugger
+
       if (chatid > 0) {
         backToMiddle();
         showMatchOverlay();
