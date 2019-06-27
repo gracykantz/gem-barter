@@ -27,6 +27,7 @@
 .profile-greeting {
   position: relative;
 }
+
 body {
  background-color: $light-gray;
 }
@@ -40,7 +41,19 @@ body {
 .profile-rating {
   text-align: center;
   font-size: 1.7rem;
-  padding-top: 30px;
+  padding-top: 10px;
   color: $danger;
+}
 
+.profile-rating-sm {
+  color: $danger;
+  font-size: 1.7rem;
+}
+
+.profile-name {
+  color: $primary;
+}
+
+.profile-description {
+  color: $success;
 }
