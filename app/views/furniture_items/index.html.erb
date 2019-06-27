@@ -15,7 +15,10 @@
                               <% image.each do |i| %>
                                 <% ppp[item] << i.photo %>
                               <% end %>
-                            <%= cl_image_tag image[0].photo, class: "card--image" %>
+
+                            <%= cl_image_tag image[0].photo, class: "card--image", crop: :fit, :flags => "lossy", loading: "lazy"%>
+
+
                           </div>
                       </div> <!-- closing card content -->
 
