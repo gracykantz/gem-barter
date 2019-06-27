@@ -69,17 +69,7 @@
         <div class="stackedcards--animatable stackedcards-overlay match">
           <!-- <img src="https://image.ibb.co/m1ykYS/rank_army_star_2_3x.png" width="28" height="26"> -->
           <!-- <span><h1>It is a match!</h1></span> --><p class="match-title">You've made a match!</p>
-      <!--     <div>
-            <%= cl_image_tag current_user.furniture_items.first.images.first.photo, class: "cardhistory--image rounded" %>
-            <% @swiper = Swipe.find_by_match_id(current_user.furniture_items.last.matched_to_id) %>
-            <% if @swipe.present? %>
-              <% if current_user.id == @swiper.owned_furniture_item.user.id %>
-                <%= cl_image_tag @swipe.wanted_furniture_item.images.first.photo, class: "cardhistory--image rounded" %>
-              <% else %>
-                <%= cl_image_tag @swipe.owned_furniture_item.images.first.photo, class: "cardhistory--image rounded" %>
-              <% end %>
-            <% end %>
-          </div> -->
+
 
           <div>
           <% @chat_room = ChatRoom.where('name LIKE ? AND status = ?', "%#{current_user.first_name}%", 'Open') %>
