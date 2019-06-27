@@ -51,8 +51,8 @@ oscar = User.create!(
     avatar_url: "https://i.imgur.com/17hXBzb.jpg",
     bio: "I really like chicken wings",
     remote_photo_url: "https://i.imgur.com/17hXBzb.jpg",
-    location: "Laröd, Helsingborg"
-  #  average_rating: 0
+    location: "Laröd, Helsingborg",
+    average_rating: 1
     )
 
 furniture_item = oscar.furniture_items.create!(
@@ -70,8 +70,8 @@ gracy = User.create!(
     avatar_url: "https://i.imgur.com/KXSQEfC.jpg",
     bio: "Lover of planet and people, cat owner, and always looking to renew and refresh the style of my home.",
     remote_photo_url: "https://i.imgur.com/KXSQEfC.jpg",
-    location: "Rosengarden, Helsingborg"
-  #  average_rating: 0
+    location: "Rosengarden, Helsingborg",
+    average_rating: 5
     )
 
 furniture_item = gracy.furniture_items.create!(
@@ -90,8 +90,8 @@ mika = User.create!(
     avatar_url: "https://education.fsu.edu/wp-content/uploads/2016/09/staff-avatar-man.png",
     bio: "Love refreshing my place, and meeting new people",
     remote_photo_url: "https://education.fsu.edu/wp-content/uploads/2016/09/staff-avatar-man.png",
-    location: "Sockengatan, Helsingborg"
-  #  average_rating: 0
+    location: "Sockengatan, Helsingborg",
+    average_rating: 4
     )
 
 furniture_item = mika.furniture_items.create!(
@@ -111,8 +111,8 @@ edwin = User.create!(
     avatar_url: "https://i.imgur.com/ZKcBGtA.jpg",
     bio: "Into antique furniture with a long history.",
     remote_photo_url: "https://i.imgur.com/ZKcBGtA.jpg",
-    location: "Kullagatan, Helsingborg"
-  #  average_rating: 0
+    location: "Kullagatan, Helsingborg",
+    average_rating: 3
     )
 
 furniture_item = edwin.furniture_items.create!(
@@ -133,8 +133,8 @@ rose = User.create!(
     avatar_url: "https://i.imgur.com/Sliu9Co.jpg",
     bio: "I have a beautiful daughter, and another one on the way. Looking for great finds for my kids!",
     remote_photo_url: "https://i.imgur.com/Sliu9Co.jpg",
-    location: "Kullagatan, Helsingborg"
-  #  average_rating: 0
+    location: "Kullagatan, Helsingborg",
+    average_rating: 5
     )
 
 furniture_item = rose.furniture_items.create!(
@@ -153,8 +153,8 @@ furniture_item = rose.furniture_items.create!(
     avatar_url: "https://i.imgur.com/gheZcFH.jpg",
     bio: "Reliable and looking to trade!",
     remote_photo_url: "https://i.imgur.com/gheZcFH.jpg",
-    location: "Kullagatan, Helsingborg"
-  #  average_rating: 0
+    location: "Kullagatan, Helsingborg",
+    average_rating: 4
     )
 
 furniture_item = shalini.furniture_items.create!(
@@ -173,8 +173,8 @@ josh = User.create!(
     avatar_url: "https://education.fsu.edu/wp-content/uploads/2016/09/staff-avatar-man.png",
     bio: "Happy father of two",
     remote_photo_url: "https://education.fsu.edu/wp-content/uploads/2016/09/staff-avatar-man.png",
-    location: "Lund"
-  #  average_rating: 0
+    location: "Lund",
+    average_rating: 4
     )
 
 furniture_item = josh.furniture_items.create!(
@@ -193,8 +193,8 @@ ludvig = User.create!(
     avatar_url: "https://i.imgur.com/uUgORdr.jpg",
     bio: "I like Magic the Gathering, and disappointing my friends.",
     remote_photo_url: "https://i.imgur.com/uUgORdr.jpg",
-    location: "Helsingborg Central, Helsingborg"
-  #  average_rating: 0
+    location: "Helsingborg Central, Helsingborg",
+    average_rating: 2
     )
 
 furniture_item = ludvig.furniture_items.create!(
@@ -213,8 +213,8 @@ alyssa = User.create!(
     avatar_url: "https://i.imgur.com/NBQC65H.jpg",
     bio: "",
     remote_photo_url: "https://i.imgur.com/NBQC65H.jpg",
-    location: "Hyllie Boulevard 19, Malmö"
-  #  average_rating: 0
+    location: "Hyllie Boulevard 19, Malmö",
+    average_rating: 5
     )
 
 furniture_item = alyssa.furniture_items.create!(
@@ -233,8 +233,8 @@ lucy = User.create!(
     avatar_url: "https://i.imgur.com/M7LmDwb.jpg",
     bio: "Lover of cats and girls and I like to collect weird interesting pieces for my place, added bonus if it is anything mythology related",
     remote_photo_url: "https://i.imgur.com/M7LmDwb.jpg",
-    location: "Mariagatan 6, Helsingborg"
-  #  average_rating: 0
+    location: "Mariagatan 6, Helsingborg",
+    average_rating: 4
     )
 
 furniture_item = lucy.furniture_items.create!(
@@ -254,8 +254,8 @@ dom = User.create!(
     avatar_url: "https://i.imgur.com/Jd7TWTo.jpg",
     bio: "",
     remote_photo_url: "https://i.imgur.com/Jd7TWTo.jpg",
-    location: "Stortorget 18, Helsingborg"
-  #  average_rating: 0
+    location: "Stortorget 18, Helsingborg",
+    average_rating: nil
     )
 
 furniture_item = dom.furniture_items.create!(
@@ -274,8 +274,8 @@ magda = User.create!(
     avatar_url: "https://i.imgur.com/WHU7PWg.jpg",
     bio: "Happy mother of two amazing girls, working on living sustainably so they can have a better planet to live on.",
     remote_photo_url: "https://i.imgur.com/WHU7PWg.jpg",
-    location: "Järnvägsgatan 13, Helsingborg"
-  #  average_rating: 0
+    location: "Järnvägsgatan 13, Helsingborg",
+    average_rating: 3
     )
 
 furniture_item = magda.furniture_items.create!(
@@ -295,8 +295,8 @@ drazen = User.create!(
     avatar_url: "https://i.imgur.com/pe3OuGV.jpg",
     bio: "",
     remote_photo_url: "https://i.imgur.com/pe3OuGV.jpg",
-    location: "Sofierovägen 131, Helsingborg"
-  #  average_rating: 0
+    location: "Sofierovägen 131, Helsingborg",
+    average_rating: 5
     )
 
 furniture_item = drazen.furniture_items.create!(
@@ -317,8 +317,8 @@ jane = User.create!(
     avatar_url: "https://i.imgur.com/23fEv78.jpg",
     bio: "Redecorating my summer house and looking for antique items",
     remote_photo_url: "https://i.imgur.com/23fEv78.jpg",
-    location: "GUSTAV ADOLFS TORG 8, Helsingborg"
-  #  average_rating: 0
+    location: "GUSTAV ADOLFS TORG 8, Helsingborg",
+    average_rating: 4
     )
 
 furniture_item = jane.furniture_items.create!(
@@ -337,8 +337,8 @@ olga = User.create!(
     avatar_url: "https://i.imgur.com/mm0WqBN.jpg",
     bio: "Love to travel and explore new places, and collect things from interesting areas.",
     remote_photo_url: "https://i.imgur.com/mm0WqBN.jpg",
-    location: "Bollbrogatan 1, Helsingborg"
-  #  average_rating: 0
+    location: "Bollbrogatan 1, Helsingborg",
+    average_rating: 5
     )
 
 furniture_item = olga.furniture_items.create!(
@@ -357,8 +357,8 @@ laura = User.create!(
     avatar_url: "https://i.imgur.com/pPar5l2.jpg",
     bio: "",
     remote_photo_url: "https://i.imgur.com/pPar5l2.jpg",
-    location: "Råå, Helsingborg"
-  #  average_rating: 0
+    location: "Råå, Helsingborg",
+    average_rating: 1
     )
 
 furniture_item = laura.furniture_items.create!(
@@ -377,8 +377,8 @@ carey = User.create!(
     avatar_url: "https://i.imgur.com/uwcCXUO.jpg",
     bio: "Cat mom and avid gamer, looking for cool things for my office.",
     remote_photo_url: "https://i.imgur.com/uwcCXUO.jpg",
-    location: "Helsingborg"
-  #  average_rating: 0
+    location: "Helsingborg",
+    average_rating: 4
     )
 
 # chat_room = ChatRoom.create!(name: "general")

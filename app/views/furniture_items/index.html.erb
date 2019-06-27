@@ -40,8 +40,16 @@
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
+
                           <div class="modal-body">
                             <h3><%= furniture_item.user.first_name %></h3>
+                              <div class="profile-rating-sm">
+                                <% furniture_item.user.average_rating.to_i.times do %>
+                                  <i class="fas fa-paperclip"></i>
+                                <% end %>
+                              </div>
+
+
                             <p><%= furniture_item.user.bio %></p>
                           </div>
                           <div class="modal-footer">
