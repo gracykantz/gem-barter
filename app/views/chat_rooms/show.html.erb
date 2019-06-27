@@ -50,7 +50,7 @@
   </script>
 <% end %>
 <!-- Modal -->
-<!-- <div class="modal fade" id="mark-as-traded-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="mark-as-traded-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -60,15 +60,15 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for([@chatroom, @review]) do |f| %>
+        <%= simple_form_for [@chat_room, @review] do |f| %>
         <%= f.input :review, collection: (1..5).to_a, label: "Rate this user" %>
-        <%= f.submit "Send your review", class: "btn btn-primary button--space" %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-warning">Mark as traded</button>
+        <%= f.submit "Send your review", class: "btn btn-warning button--space" %>
+        <% end %>
       </div>
     </div>
   </div>
-</div> -->
+</div>
 <div id="space-for-navbar"></div>
