@@ -36,13 +36,31 @@ office = Category.create!(
 
 pets = Category.create!(
   name: "Pet Accessories",
-  remote_photo_url: "https://i.imgur.com/fzsfTi6.jpg" #{}"https://askgramps.org/files/2016/08/pets1.jpg"
+  remote_photo_url: "https://askgramps.org/files/2016/08/pets1.jpg"
   )
 
 outdoor = Category.create!(
   name: "Outdoor",
   remote_photo_url: "https://stylecurator.com.au/wp-content/uploads/2018/02/IKEA-outdoor-living.jpg"
   )
+oscar = User.create!(
+    first_name: "Oscar",
+    last_name: "Nilestam",
+    email: "oscar@gmail.com",
+    password: "123456",
+    avatar_url: "https://i.imgur.com/17hXBzb.jpg",
+    bio: "I really like chicken wings",
+    remote_photo_url: "https://i.imgur.com/17hXBzb.jpg",
+    location: "Laröd, Helsingborg"
+  #  average_rating: 0
+    )
+
+furniture_item = oscar.furniture_items.create!(
+  title: "Spray bottle",
+  description: "You can use this spray bottle for so many different things. Spray your plants with water, put cleaning supplies in it.",
+  category_id: outdoor.id
+  )
+  photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/NViw3uI.jpg")
 
 gracy = User.create!(
     first_name: "Gracy",
@@ -121,7 +139,7 @@ rose = User.create!(
 
 furniture_item = rose.furniture_items.create!(
   title: "Vittsjö White Glass Coffee Table",
-  description: "Purchased this wonderful coffee table from IKEA, but no longer want it with the new baby on the way glass seems dangerous. Max. length: 90 cm, Width: 50 cm, Height: 50 cm",
+  description: "Purchased this wonderful coffee table from IKEA, but no longer want it with the new baby on the way glass seems dangerous.",
   category_id: livingroom.id
   )
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/xE8TdVH.jpg")
@@ -289,24 +307,6 @@ furniture_item = drazen.furniture_items.create!(
   photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/nkEosFe.jpg")
 
 
-oscar = User.create!(
-    first_name: "Oscar",
-    last_name: "Nilestam",
-    email: "oscar@gmail.com",
-    password: "123456",
-    avatar_url: "https://i.imgur.com/17hXBzb.jpg",
-    bio: "I really like chicken wings",
-    remote_photo_url: "https://i.imgur.com/17hXBzb.jpg",
-    location: "Laröd, Helsingborg"
-  #  average_rating: 0
-    )
-
-furniture_item = oscar.furniture_items.create!(
-  title: "Spray bottle",
-  description: "You can use this spray bottle for so many different things. Spray your plants with water, put cleaning supplies in it and spray it on things you need to clean. It's a great spray bottle.",
-  category_id: outdoor.id
-  )
-  photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/NViw3uI.jpg")
 
 
 jane = User.create!(
