@@ -220,7 +220,6 @@
      border-radius: 10px;
      min-width: 265px;
  }
-
  .stackedcards-overlay.match > div,
  .stackedcards-overlay.left > div,
  .stackedcards-overlay.right > div,
@@ -257,6 +256,10 @@
      height: 100%;
  }
 
+.stackedcards-overlay.match {
+  flex-direction: column;
+  opacity: 0.9 !important;
+}
  .stackedcards-overlay.match,
  .stackedcards-overlay.top,
  .stackedcards-overlay.right,

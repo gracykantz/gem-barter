@@ -33,7 +33,6 @@ class FurnitureItemsController < ApplicationController
       puts @currentchat.name
     end
 
-    # binding.pry
 
     if @swipes.count > 0
       # Call this method to remove the swiped records from the logged in user index list
