@@ -38,6 +38,7 @@ class FurnitureItemsController < ApplicationController
     if @swipes.count > 0
       # Call this method to remove the swiped records from the logged in user index list
       @furniture_items = update_furniture_items(@swipes)
+      # raise
     else
       # @furniture_items = FurnitureItem.where.not('user_id = ?', current_user.id)
       @category = Category.find(params[:category_id])
@@ -211,20 +212,11 @@ class FurnitureItemsController < ApplicationController
           # update furniture match id
           @ownfurniture.update(matched_to_id: @matchrec.id)
           @furniture.update(matched_to_id: @matchrec.id)
-          # puts "print swipe matched record"
-          # puts @matchrec.id
-          # puts @swipe.match_id
-          # # @swipe.save!
         end
       end
     end
   end
 
-    # logic to delete the duplicate swipe created on post call
-    # puts "own furniture id"
-    # puts @ownfurniture.id
-    # puts "wanted furniture id"
-    # puts @furniture.id
     @existswipes = Swipe.where('owned_furniture_item_id = ? AND wanted_furniture_item_id = ?', @ownfurniture.id, @furniture.id)
     # puts @existswipes.length
     if @existswipes.length > 1
@@ -243,7 +235,9 @@ class FurnitureItemsController < ApplicationController
     if @chat_room.present?
       puts @chat_room.name
       respond_to do |format|
-        format.json { render json: @chat_room.id } # don't do msg.to_json
+        msg = { chatid: @chat_room.id, image: @ownfurniture.images.first.photo_url, wname: @furniture.user.first_name, oname: current_user.first_name, wanted_id: @furniture.id, own_title: @ownfurniture.title }
+        # format.json { render json: @chat_room.id } # don't do msg.to_json
+        format.json { render json: msg }
       end
     end
     # respond_to do |format|
@@ -257,7 +251,6 @@ class FurnitureItemsController < ApplicationController
 
   def update_furniture_item_id(swipe, furn)
     # Find the Furniture item id for the current furniture
-    # @furnitureitem = FurnitureItem.find(furn.id)
     # Find the Furniture item id owned by the Current user logged in
     @usrfurnitureitm = FurnitureItem.find_by_user_id(current_user.id)
     if furn.user_id == current_user.id

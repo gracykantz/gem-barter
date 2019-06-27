@@ -38,16 +38,18 @@
       method: :delete,
       data: {confirm: "Are you sure you want to remove the furniture for trade?"} %>
     <% end %>
-
     <% if @trade == "t" %>
       <%= link_to new_furniture_item_path do %>
         <button class="btn btn-warning button--spacing editfurniture--button">Add Furniture to begin trade</button>
       <% end %><br><br>
+    <% end %>
 
+    <% if @hflag == "X" %>
       <%= link_to show_history_path do %>
         <button class = "btn btn-success button--spacing editfurniture--button">View Trading History</button>
       <% end %>
     <% end %>
+
 
     <%= link_to destroy_user_session_path, method: :delete do %>
       <i class="logout-button fas fa-sign-out-alt"></i>

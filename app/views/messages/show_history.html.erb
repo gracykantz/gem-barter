@@ -19,6 +19,9 @@
               <!-- <b>Furniture:</b><p><%= @furniture.title %></p> -->
               <%= cl_image_tag @swipe.owned_furniture_item.images.first.photo, class: "cardhistory--image rounded" %>
               <!-- <b>Furniture:</b><p><%= @swipe.owned_furniture_item.title %></p> -->
+            <% else %>
+              <%= cl_image_tag @swipe.owned_furniture_item.images.first.photo, class: "cardhistory--image rounded" %>
+              <%= cl_image_tag @swipe.wanted_furniture_item.images.first.photo, class: "cardhistory--image rounded" %>
             <% end %>
           <% end %>
         </div>

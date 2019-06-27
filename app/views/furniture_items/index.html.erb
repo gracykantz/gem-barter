@@ -61,9 +61,16 @@
         <div class="stackedcards--animatable stackedcards-overlay right"><img src="https://image.ibb.co/dCuESn/Path_3x.png" width="auto" height="auto"></div>
         <div class="stackedcards--animatable stackedcards-overlay left"><img src="https://image.ibb.co/heTxf7/20_status_close_3x.png" width="auto" height="auto"></div>
         <div class="stackedcards--animatable stackedcards-overlay match">
-          <img src="https://image.ibb.co/m1ykYS/rank_army_star_2_3x.png" width="28" height="26">
-          <span><h1>It is a match!</h1></span>
-          <div><button id="chatBTN" class="btn btn-primary">Continue</button></div>
+          <!-- <img src="https://image.ibb.co/m1ykYS/rank_army_star_2_3x.png" width="28" height="26"> -->
+          <!-- <span><h1>It is a match!</h1></span> --><p class="card--content">Matched!!</p>
+          <%= cl_image_tag current_user.furniture_items.first.images.first.photo, class: "cardhistory--image rounded" %>
+          <% @swipe = Swipe.find_by_match_id(current_user.furniture_items.first.matched_to_id) %>
+          <% if current_user.id == @swipe.owned_furniture_item.user.id %>
+          <%= cl_image_tag @swipe.wanted_furniture_item.images.first.photo, class: "cardhistory--image rounded" %>
+          <% else %>
+          <%= cl_image_tag @swipe.owned_furniture_item.images.first.photo, class: "cardhistory--image rounded" %>
+          <% end %>
+          <div><button id="chatBTN" class="btn btn-primary" data-wfid="" data-chatid="">Continue</button></div>
         </div>
       </div>
       <div class="global-actions">
