@@ -257,8 +257,12 @@
  }
 
 .stackedcards-overlay.match {
+  opacity: 1.0 !important;
   flex-direction: column;
-  opacity: 0.9 !important;
+  background-color: rgba(240, 240, 240, 1.0) !important;
+}
+.party-popper {
+  font-size: 200px;
 }
  .stackedcards-overlay.match,
  .stackedcards-overlay.top,
@@ -302,5 +306,12 @@
      position: relative;
      display: block;
  }
+#chatBTN a {
+  color: white !important;
 
+}
+
+#chatBTN.btn {
+  padding: 1.375rem 1.75rem !important;
+}
 /*----- Stacked Cards component css END -----*/

@@ -63,23 +63,23 @@
           </div>
 
         <!--div class="stackedcards--animatable stackedcards-overlay" style="opacity: 0.5;" id="picdots"></div-->
+
         <div class="stackedcards--animatable stackedcards-overlay top"><img src="https://image.ibb.co/m1ykYS/rank_army_star_2_3x.png"  width="auto" height="auto"></div>
         <div class="stackedcards--animatable stackedcards-overlay right"><img src="https://image.ibb.co/dCuESn/Path_3x.png" width="auto" height="auto"></div>
         <div class="stackedcards--animatable stackedcards-overlay left"><img src="https://image.ibb.co/heTxf7/20_status_close_3x.png" width="auto" height="auto"></div>
         <div class="stackedcards--animatable stackedcards-overlay match">
-          <!-- <img src="https://image.ibb.co/m1ykYS/rank_army_star_2_3x.png" width="28" height="26"> -->
-          <!-- <span><h1>It is a match!</h1></span> --><p class="match-title">You've made a match!</p>
 
-
+          <h1 class="match-title">You've made a match!</h1>
+          <span class="party-popper">🎉</span>
           <div>
           <% @chat_room = ChatRoom.where('name LIKE ? AND status = ?', "%#{current_user.first_name}%", 'Open') %>
           <% if @chat_room.empty? %>
-            <button id="chatBTN" class="btn btn-danger w-100" ><%= link_to "Start a conversation", noshow_path %></button>
+            <button id="chatBTN" class="btn btn-warning"><%= link_to "Start a conversation", noshow_path %></button>
           <% else %>
-              <button id="chatBTN" class="btn btn-danger w-100"><%= link_to "Start a conversation", chat_room_path(@chat_room.id)%></button>
+              <button id="chatBTN" class="btn btn-warning"><%= link_to "Start a conversation", chat_room_path(@chat_room.id)%></button>
+
            <% end %>
           </div>
-
         </div>
       </div>
     </div>
