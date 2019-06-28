@@ -158,11 +158,11 @@ furniture_item = rose.furniture_items.create!(
     )
 
 furniture_item = shalini.furniture_items.create!(
-  title: "Eclectic Bird Plate",
-  description: "Beautiful blue plate with two lovebirds",
+  title: "Modern sofa cushion",
+  description: "Has a duck feather pillow in it, super soft and comfortable, modern design.",
   category_id: kitchen.id
   )
-  photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/kx8Aow1.jpg")
+  photo = Image.create!(furniture_item: furniture_item, remote_photo_url: "https://i.imgur.com/TKpvzbh.jpg")
 
 
 josh = User.create!(
